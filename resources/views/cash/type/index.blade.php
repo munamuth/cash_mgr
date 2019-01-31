@@ -28,9 +28,9 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach( $types as $type )
+						@foreach( $types as $index => $type )
 						<tr>
-							<td>{{$type->id}}</td>
+							<td>{{$index + 1}}</td>
 							<td>{{$type->name}}</td>
 							<td>{{$type->type_of}}</td>
 							<td>{{$type->created_at}}</td>

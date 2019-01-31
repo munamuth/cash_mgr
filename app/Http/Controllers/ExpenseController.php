@@ -15,7 +15,11 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        $expense = Expense::get();
+        if( Auth::user()->role == 1 ){
+            $expense = Expense::get();
+        } else {
+            $expense = Expense::where('id', Auth::id() )->get();
+        }
         return view('cash.expense.index', compact('expense'));
     }
 

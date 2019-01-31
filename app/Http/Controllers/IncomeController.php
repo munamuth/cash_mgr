@@ -16,7 +16,12 @@ class IncomeController extends Controller
      */
     public function index()
     {
-        $income = Income::get();
+        if( Auth::user()->role == 1 ){
+            $income = Income::get();
+        } else {
+            $income = Income::where('id', Auth::id() )->get();
+        }
+        
         return view('cash.income.index', compact('income'));
     }
 

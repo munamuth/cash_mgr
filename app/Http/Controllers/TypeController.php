@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Type;
 use Illuminate\Http\Request;
-
+use Auth;
 class TypeController extends Controller
 {
     /**
@@ -14,7 +14,10 @@ class TypeController extends Controller
      */
     public function index()
     {
-        $types = Type::get();
+        if( Auth::user()->role == 1 )
+            $types = Type::get();
+        else 
+            $types = Type::where('u_id', Auth::id() )->get();
         return view('cash.type.index', compact("types"));
     }
 
@@ -39,6 +42,7 @@ class TypeController extends Controller
     {
         $type = new Type();
         $type->name = $request->name;
+        $type->u_id = Auth::id();
         $type->type_of = $request->type_of;
         if($type->save()){
             $request->session()->flash('status', 'Task was successful!');

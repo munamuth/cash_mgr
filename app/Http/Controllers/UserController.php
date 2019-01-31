@@ -36,7 +36,11 @@ class UserController extends Controller
      */
     public function index(User $user)
     {
-        $users = $user->get();
+        if( Auth::user()->role == 1 ){
+            $users = $user::get();
+        } else {
+            $users = $user::where('id', Auth::id() )->get();
+        }
         return view('user.index', compact('users'));
     }
 
