@@ -8,7 +8,9 @@
 		<div class="row pb-1">
 			<div class="col">
 				<div class="text-right">
+					@if( Auth::User()->role == 1)
 					<a class="btn btn-success btn-sm" href="{{ route('users.create') }}"><i class="fa fa-plus"></i> Create</a>
+					@endif
 				</div>
 			</div>
 		</div>

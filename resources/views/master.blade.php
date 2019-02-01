@@ -73,7 +73,12 @@
 </head>
 <body>
 	<div class="container-fluid">
-
+		<div class="row">
+			<div class="col text-right">
+				<button class="btn btn-link btn-sm">KH</button>
+				<button class="btn btn-link btn-sm">EN</button>
+			</div>
+		</div>
 		<div class="row  bg-primary" id="first-row">
 			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 p-3 border-right d-flex">
 				<button class="btn btn-success btn-sm text-light d-block d-md-none" id="btnMenu"><i class="fa fa-bars"></i></button>
@@ -86,7 +91,7 @@
 
 					<div class="row">
 						<div class="col">
-							<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light">Logout</a>
+							<a class="font-weight-bold text-light">{{Auth::user()->name}}</a>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 							    {{ csrf_field() }}
 							</form>
@@ -97,14 +102,14 @@
 		</div>
 
 		<div class="row" id="second-row">
-			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 bg-success p-0 d-none d-md-block" id="menu">
+			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 bg-secondary p-0 d-none d-md-block" id="menu">
 				<ul class="menu">
-					<li><a href="{{ url('/') }}">Home <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a href="{{ url('/income') }}">Income <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a href="{{ url('/expense') }}">Expense <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a href="{{ url('/type') }}">Types <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a href="{{ url('/users') }}">Users <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light">Logout</a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> Home <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/income') }}"><i class="fa fa-money-check-alt"></i> Income <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/expense') }}"><i class="fa fa-money-bill-alt"></i> Expense <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/type') }}"><i class="fa fa-project-diagram"></i> Types <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/users') }}"><i class="fa fa-users"></i> Users <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
+					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
 
 				</ul>
 			</div>

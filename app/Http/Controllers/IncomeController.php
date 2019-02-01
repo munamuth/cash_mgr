@@ -19,7 +19,7 @@ class IncomeController extends Controller
         if( Auth::user()->role == 1 ){
             $income = Income::get();
         } else {
-            $income = Income::where('id', Auth::id() )->get();
+            $income = Income::where('u_id', Auth::id() )->get();
         }
         
         return view('cash.income.index', compact('income'));
@@ -32,7 +32,8 @@ class IncomeController extends Controller
      */
     public function create()
     {   
-        $types = Type::where('type_of', "Income")->get();
+        $types = Type::where('type_of', "Income")
+                    ->where('u_id', Auth::id() )->get();
         return view('cash.income.create', compact("types"));
     }
 

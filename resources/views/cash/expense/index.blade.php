@@ -1,11 +1,16 @@
 @extends('master')
 
 @section('header')
-<meta http-equiv="refresh" content="30">
+<meta http-equiv="refresh" content="5">
 @endsection
 
 @section('body')
 <div class="">
+	<div class="row">
+		<div class="col">
+			<p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> Expense Records </p>
+		</div>
+	</div>
 	<br>
 	<div class="row animated bounceInLeft">
 		<div class="col text-right">
@@ -21,6 +26,9 @@
 						<tr>
 							<th style="min-width: 15px">ID</th>
 							<th style="min-width: 200px">Name</th>
+							@if( Auth::user()->role == 1 )
+							<th style="min-width: 200px">User Name</th>
+							@endif
 							<th style="min-width: 150px">Type</th>
 							<th style="min-width: 50px">Amount</th>
 							<th style="min-width: 200px">Date</th>
@@ -28,10 +36,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach( $expense as $ex )
+						@foreach( $expense as $index => $ex )
 							<tr>
-								<td>{{$ex->id}}</td>
+								<td>{{$index+1}}</td>
 								<td>{{$ex->name}}</td>
+								@if(Auth::user()->role == 1)
+								<th>{{$ex->getUserName->name}}</th>
+								@endif
 								@if(!empty($ex->getType))
 								<td>{{$ex->getType->name}}</td>
 								@else

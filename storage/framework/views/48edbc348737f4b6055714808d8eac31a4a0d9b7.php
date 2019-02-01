@@ -79,14 +79,14 @@
 				<button class="btn btn-success btn-sm text-light d-block d-md-none" id="btnMenu"><i class="fa fa-bars"></i></button>
 				&nbsp;
 				<p class="h4 text-light m-0">
-				Cash Management System
+				Cash Management
 				</p>
 			</div>
 			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 p-3 text-right float-righ d-none d-md-block">
 
 					<div class="row">
 						<div class="col">
-							<a href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light">Logout</a>
+							<a><?php echo e(Auth::user()->name); ?></a>
 							<form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
 							    <?php echo e(csrf_field()); ?>
 

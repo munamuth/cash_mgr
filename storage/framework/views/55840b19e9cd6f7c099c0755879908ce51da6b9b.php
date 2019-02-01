@@ -1,9 +1,14 @@
 <?php $__env->startSection('header'); ?>
-<meta http-equiv="refresh" content="30">
+<meta http-equiv="refresh" content="5">
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('body'); ?>
 <div class="">
+	<div class="row">
+		<div class="col">
+			<p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> Expense Records </p>
+		</div>
+	</div>
 	<br>
 	<div class="row animated bounceInLeft">
 		<div class="col text-right">

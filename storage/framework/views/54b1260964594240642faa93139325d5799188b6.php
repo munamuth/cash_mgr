@@ -26,9 +26,25 @@
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Salary</td>
+							<td>Income</td>
+							<td>2019-01-31</td>
+							<td>2019-01-31</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Food</td>
+							<td>Expense</td>
+							<td>2019-01-31</td>
+							<td>2019-01-31</td>
+							<td></td>
+						</tr>
 						<?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 						<tr>
-							<td><?php echo e($index + 1); ?></td>
+							<td><?php echo e($index + 3); ?></td>
 							<td><?php echo e($type->name); ?></td>
 							<td><?php echo e($type->type_of); ?></td>
 							<td><?php echo e($type->created_at); ?></td>

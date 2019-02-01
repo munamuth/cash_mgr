@@ -5,6 +5,11 @@
 <?php $__env->startSection('body'); ?>
 	<div class="row">
 		<div class="col">
+			<p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> Expense Record / Create New</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
 			
 			<form action="<?php echo e(route('expense.store')); ?>" method="post" enctype="multipart/form-data">
 				<?php echo csrf_field(); ?>
@@ -27,6 +32,7 @@
 									<div class="col-12 col-sm-6">Expense type</div>
 									<div class="col-12 col-sm-6">
 										<select class="form-control form-control-sm" name="type">
+											<option value="2">Food</option>
 											<?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 												<option value="<?php echo e($type->id); ?>"><?php echo e($type->name); ?></option>
 											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

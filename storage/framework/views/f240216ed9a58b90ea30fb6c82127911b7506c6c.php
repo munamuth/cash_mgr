@@ -27,6 +27,7 @@
 									<div class="col-12 col-sm-6">Income type</div>
 									<div class="col-12 col-sm-6">
 										<select class="form-control form-control-sm" name="type">
+											<option value="1">Salary</option>
 											<?php $__currentLoopData = $types; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $type): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 												<option value="<?php echo e($type->id); ?>"><?php echo e($type->name); ?></option>
 											<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

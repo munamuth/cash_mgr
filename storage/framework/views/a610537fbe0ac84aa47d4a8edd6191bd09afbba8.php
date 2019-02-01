@@ -6,7 +6,9 @@
 		<div class="row pb-1">
 			<div class="col">
 				<div class="text-right">
+					<?php if( Auth::User()->role == 1): ?>
 					<a class="btn btn-success btn-sm" href="<?php echo e(route('users.create')); ?>"><i class="fa fa-plus"></i> Create</a>
+					<?php endif; ?>
 				</div>
 			</div>
 		</div>
