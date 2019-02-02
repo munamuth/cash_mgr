@@ -18,7 +18,7 @@ class CreateIncomesTable extends Migration
             $table->integer('u_id');
             $table->string('name');
             $table->integer('type');
-            $table->float('amount');
+            $table->float('amount', 10, 4);
             $table->timestamps();
         });
     }

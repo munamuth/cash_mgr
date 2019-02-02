@@ -15,11 +15,8 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        if( Auth::user()->role == 1 ){
-            $expense = Expense::get();
-        } else {
-            $expense = Expense::where('u_id', Auth::id() )->get();
-        }
+        
+        $expense = Expense::where('u_id', Auth::id() )->get();       
         $month = date('m');
         $total = Expense::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
 

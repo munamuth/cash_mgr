@@ -73,12 +73,7 @@
 </head>
 <body>
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col text-right">
-				<button class="btn btn-link btn-sm">KH</button>
-				<button class="btn btn-link btn-sm">EN</button>
-			</div>
-		</div>
+		
 		<div class="row  bg-primary" id="first-row">
 			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 p-3 border-right d-flex">
 				<button class="btn btn-success btn-sm text-light d-block d-md-none" id="btnMenu"><i class="fa fa-bars"></i></button>

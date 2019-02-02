@@ -16,11 +16,8 @@ class IncomeController extends Controller
      */
     public function index()
     {
-        if( Auth::user()->role == 1 ){
-            $income = Income::get();
-        } else {
-            $income = Income::where('u_id', Auth::id() )->get();
-        }
+        
+        $income = Income::where('u_id', Auth::id() )->get();
         $month = date('m');
         $total = Income::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
         return view('cash.income.index', compact('income', 'total'));
