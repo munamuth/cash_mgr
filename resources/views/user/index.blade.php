@@ -24,6 +24,7 @@
 								<th style="min-width: 10px;">ID</th>
 								<th style="min-width: 150px;">Name</th>
 								<th style="min-width: 150px;">Username</th>
+								<th style="min-width: 150px;">Role</th>
 								<th style="min-width: 200px;">Created</th>
 								<th style="min-width: 200px;">Updated</th>
 								<th style="min-width: 300px;">Action</th>
@@ -35,12 +36,18 @@
   									<td>{{ $user->id }}</td>
   									<td>{{ $user->name }}</td>
   									<td>{{ $user->email }}</td>
+  									@if( $user->role == 1 )
+  									<td>Admin</td>
+  									@else
+  									<td>User</td>
+  									@endif
   									<td>{{ $user->created_at }}</td>
   									<td>{{ $user->updated_at }}</td>
   									<td class="d-flex">
   										<a class="btn btn-warning btn-sm" href="{{ route('user.edit.password', $user->id) }}"><i class="fa fa-edit"></i> Change Password</a>
   										&nbsp;
-  										<button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Destroy</button>
+  										<button class="btn btn-danger btn-sm" onclick="$('#form-destroy').submit()"><i class="fa fa-trash"></i> Destroy</button>
+  										<form action="{{ route('users.destroy', $user->id) }}" method="post" id="form-destroy">@csrf @method("delete")</form>
   									</td>
   								</tr>
 							@endforeach
