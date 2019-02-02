@@ -68,6 +68,17 @@
 				border-radius: 30px;
 			}
 		}
+
+		*{
+			border-radius: 0!important;
+		}
+		.card-header{
+			background: #28a745!important;
+			color: #fff;
+			font-weight: bolder;
+			font-size: 20px;
+			padding: 5px 15px;
+		}
 	</style>
 	@yield('header')
 </head>

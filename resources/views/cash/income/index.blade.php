@@ -14,8 +14,8 @@
 	<br>
 	<div class="row animated bounceInLeft">
 
-		<div class="col">Your Income This Month: <span class="h4 text-success">$ {{$total}}</span></div>
-		<div class="col text-right">
+		<div class="col-9 col-sm-6">Your Income This Month: <span class="h4 text-success">$ {{$total}}</span></div>
+		<div class="col-3 col-sm-6 text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('income.create') }}"><i class="fa fa-plus"></i> Create</a>
 		</div>
 	</div>

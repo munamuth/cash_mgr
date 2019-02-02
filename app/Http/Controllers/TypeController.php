@@ -14,14 +14,7 @@ class TypeController extends Controller
      */
     public function index()
     {
-        if( Auth::user()->role == 1 && Auth::id() == 1 ){
-            $types = Type::where("id", ">", 2)->get();
-        } else if (Auth::user()->role == 1 && Auth::id() != 1 ) {
-             $types = Type::get();
-        }
-        else{
-            $types = Type::where('u_id', Auth::id() )->get();
-        }
+        $types = Type::where("id", ">", 2)->where('u_id', Auth::id())->get();
         return view('cash.type.index', compact("types"));
     }
 

@@ -13,8 +13,8 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
-		<div class="col-12 col-sm-6">Your Expense This Month: <span class="h4 text-danger">$ {{$total}}</span></div>
-		<div class="col-12 col-sm-6 text-right">
+		<div class="col-9 col-sm-6">Your Expense This Month: <span class="h4 text-danger">$ {{$total}}</span></div>
+		<div class="col-3 col-sm-6 text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
 
 		</div>
@@ -32,7 +32,7 @@
 							<th style="min-width: 200px">User Name</th>
 							@endif
 							<th style="min-width: 150px">Type</th>
-							<th style="min-width: 50px">Amount</th>
+							<th style="min-width: 150px">Amount</th>
 							<th style="min-width: 200px">Date</th>
 							<th style="min-width: 200px">Action</th>
 						</tr>
