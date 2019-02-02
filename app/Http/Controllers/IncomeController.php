@@ -32,7 +32,9 @@ class IncomeController extends Controller
      */
     public function create()
     {   
-        $types = Type::where('type_of', "Income")->get();
+        $types = Type::where('type_of', "Income")
+                    ->where("u_id", Auth::id())
+                    ->get();
         return view('cash.income.create', compact("types"));
     }
 

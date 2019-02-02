@@ -38,7 +38,7 @@
 									<label>Password</label>
 								</div>
 								<div class="col-12 col-sm-8">
-									<input type="text" name="password" class="form-control form-control-sm" placeholder="Password">
+									<input type="password" name="password" class="form-control form-control-sm" placeholder="Password">
 								</div>
 							</div>
 							<div class="row">

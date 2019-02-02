@@ -30,7 +30,9 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        $types = Type::where('type_of', "Expense")->get();
+        $types = Type::where('type_of', "Expense")
+                ->where("u_id", Auth::id())
+                ->get();
         return view('cash.expense.create', compact('types'));
     }
 

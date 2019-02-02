@@ -20,7 +20,10 @@
 					<thead>
 						<tr>
 							<th style="min-width: 10px">ID</th>
-							<th style="min-width: 150px">Name</th>
+							<th style="min-width: 150px">Name</th>							
+							@if( Auth::user()->role == 1 )
+							<th style="min-width: 150px">Creator</th>
+							@endif
 							<th style="min-width: 100px">Type Of</th>
 							<th style="min-width: 200px">Created</th>
 							<th style="min-width: 200px">Updated</th>
@@ -28,10 +31,31 @@
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<td>1</td>
+							<td>Salary</td>
+							<td>Default</td>
+							<td>Income</td>
+							<td>2019-01-31</td>
+							<td>2019-01-31</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td>Food</td>
+							<td>Default</td>
+							<td>Expense</td>
+							<td>2019-01-31</td>
+							<td>2019-01-31</td>
+							<td></td>
+						</tr>
 						@foreach( $types as $index => $type )
 						<tr>
-							<td>{{$index + 1}}</td>
+							<td>{{$index + 3}}</td>
 							<td>{{$type->name}}</td>
+							@if( Auth::user()->role == 1 )
+							<td>{{$type->getUserName->name}}</td>
+							@endif
 							<td>{{$type->type_of}}</td>
 							<td>{{$type->created_at}}</td>
 							<td>{{$type->updated_at}}</td>

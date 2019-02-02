@@ -10,5 +10,8 @@ class Expense extends Model
 	{
 		return $this->hasOne('App\Type', 'id', 'type');
 	}
+	public function getUserName(){
+    	return $this->hasOne('App\User', 'id', 'u_id');
+    }
     
 }

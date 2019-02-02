@@ -7,6 +7,11 @@
 @section('body')
 	<div class="row">
 		<div class="col">
+			<p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> Expense Records / Create New</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
 			
 			<form action="{{ route('income.store') }}" method="post" enctype="multipart/form-data">
 				@csrf
@@ -29,6 +34,7 @@
 									<div class="col-12 col-sm-6">Income type</div>
 									<div class="col-12 col-sm-6">
 										<select class="form-control form-control-sm" name="type">
+											<option value="1">Salary</option>
 											@foreach( $types as $type )
 												<option value="{{$type->id}}">{{$type->name}}</option>
 											@endforeach
