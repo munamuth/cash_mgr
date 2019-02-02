@@ -19,10 +19,11 @@ class IncomeController extends Controller
         if( Auth::user()->role == 1 ){
             $income = Income::get();
         } else {
-            $income = Income::where('id', Auth::id() )->get();
+            $income = Income::where('u_id', Auth::id() )->get();
         }
-        
-        return view('cash.income.index', compact('income'));
+        $month = date('m');
+        $total = Income::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
+        return view('cash.income.index', compact('income', 'total'));
     }
 
     /**
@@ -34,6 +35,7 @@ class IncomeController extends Controller
     {   
         $types = Type::where('type_of', "Income")
                     ->where("u_id", Auth::id())
+                    ->where("id", '>', 2)
                     ->get();
         return view('cash.income.create', compact("types"));
     }

@@ -18,9 +18,12 @@ class ExpenseController extends Controller
         if( Auth::user()->role == 1 ){
             $expense = Expense::get();
         } else {
-            $expense = Expense::where('id', Auth::id() )->get();
+            $expense = Expense::where('u_id', Auth::id() )->get();
         }
-        return view('cash.expense.index', compact('expense'));
+        $month = date('m');
+        $total = Expense::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
+
+        return view('cash.expense.index', compact('expense', 'total'));
     }
 
     /**
@@ -32,6 +35,7 @@ class ExpenseController extends Controller
     {
         $types = Type::where('type_of', "Expense")
                 ->where("u_id", Auth::id())
+                ->where("id", '>', 2)
                 ->get();
         return view('cash.expense.create', compact('types'));
     }

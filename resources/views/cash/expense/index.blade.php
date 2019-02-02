@@ -1,7 +1,7 @@
 @extends('master')
 
 @section('header')
-<meta http-equiv="refresh" content="5">
+<meta http-equiv="refresh" content="30">
 @endsection
 
 @section('body')
@@ -13,8 +13,10 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
+		<div class="col">Your Expense This Month: <span class="h4 text-danger">$ {{$total}}</span></div>
 		<div class="col text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
+
 		</div>
 	</div>
 	<br>

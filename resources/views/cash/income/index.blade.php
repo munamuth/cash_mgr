@@ -13,6 +13,8 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
+
+		<div class="col">Your Income This Month: <span class="h4 text-success">$ {{$total}}</span></div>
 		<div class="col text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('income.create') }}"><i class="fa fa-plus"></i> Create</a>
 		</div>
