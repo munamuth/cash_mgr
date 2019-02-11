@@ -4,11 +4,13 @@
 	<title>Cash Management</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/jquery-ui/jquery-ui.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/animate.css/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/bootstrap/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/fontawesome/css/all.min.css') }}">
 
 	<script type="text/javascript" src="{{ url('/public/asset/jquery/jquery-3.3.1.js') }}"></script>
+	<script type="text/javascript" src="{{ url('/public/asset/jquery-ui/jquery-ui.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/public/asset/bootstrap/js/bootstrap.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/public/asset/fontawesome/js/all.min.js') }}"></script>
 
@@ -145,6 +147,10 @@
 			$('.message').slideUp()
 		}, 2500);
 
+
+		 $( function() {
+		    $( ".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
+		  } );
 	</script>
 </body>
 </html>

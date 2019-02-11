@@ -51,7 +51,7 @@
 								<td>NULL</td>
 								@endif
 								<td class="text-right text-success font-weight-bold">៛​​ <span class="text-right">{{number_format($in->amount)}}</span></td>
-								<td>{{$in->created_at}}</td>
+								<td>{{$in->created_at->format('d/m/Y')}}</td>
 								<td class="d-flex">
 									<a class="btn btn-success btn-sm" href="{{ route('income.edit', $in->id) }}"><i class="fa fa-edit"></i> Edit</a>
 									&nbsp;

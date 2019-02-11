@@ -6,6 +6,7 @@ use App\Expense;
 use Illuminate\Http\Request;
 use App\Type;
 use Auth;
+use Carbon\Carbon;
 class ExpenseController extends Controller
 {
     /**
@@ -45,11 +46,14 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
+        $create = Carbon::createFromFormat('m/d/Y',$request->create); 
+
         $expense = new Expense();
         $expense->u_id = Auth::id();
         $expense->name = $request->name;
         $expense->type = $request->type;
         $expense->amount = $request->amount;
+        $expense->created_at = $create->format('Y-m-d');
         if( $expense->save() )
         {
             $request->session()->flash('status', 'Task was successfully!!!');

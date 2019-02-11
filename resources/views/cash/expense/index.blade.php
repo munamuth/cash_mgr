@@ -51,7 +51,7 @@
 								<td>NULL</td>
 								@endif
 								<td class="text-danger text-right font-weight-bold">៛ {{number_format($ex->amount)}}</td>
-								<td>{{$ex->created_at}}</td>
+								<td>{{$ex->created_at->format('d/m/Y')}}</td>
 								<td class="d-flex">
 									<a class="btn btn-success btn-sm" href="{{ route('expense.edit', $ex->id) }}"><i class="fa fa-edit"></i> Edit</a>
 									&nbsp;

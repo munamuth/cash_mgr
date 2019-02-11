@@ -6,7 +6,7 @@ use App\Income;
 use App\Type;
 use Illuminate\Http\Request;
 use Auth;
-
+use Carbon\Carbon;
 class IncomeController extends Controller
 {
     /**
@@ -45,11 +45,15 @@ class IncomeController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $create = Carbon::createFromFormat('d/m/Y',$request->create);
+
         $income = new Income();
         $income->u_id = Auth::id();
         $income->name = $request->name;
         $income->type = $request->type;
         $income->amount = $request->amount;
+        $income->created_at = $create->format('Y-m-d');
         if( $income->save() )
         {
             $request->session()->flash('status', 'Task was successfully!!!');
