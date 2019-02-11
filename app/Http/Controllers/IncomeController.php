@@ -17,7 +17,7 @@ class IncomeController extends Controller
     public function index()
     {
         
-        $income = Income::where('u_id', Auth::id() )->get();
+        $income = Income::where('u_id', Auth::id() )->orderBy('created_at')->get();
         $month = date('m');
         $total = Income::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
         return view('cash.income.index', compact('income', 'total'));
@@ -97,10 +97,12 @@ class IncomeController extends Controller
      */
     public function update(Request $request, Income $income)
     {
+        $create = Carbon::createFromFormat('d/m/Y',$request->create);
         $income->u_id = Auth::id();
         $income->name = $request->name;
         $income->type = $request->type;
         $income->amount = $request->amount;
+        $income->created_at = $create->format('Y-m-d');
         if( $income->save() ){
             $request->session()->flash('status', 'Task was successfully!!!');
             return redirect()->route('income.index');

@@ -24,7 +24,7 @@
 								<div class="form-group row">
 									<div class="col-12 col-sm-6">Date</div>
 									<div class="col-12 col-sm-6">
-										<input class="form-control form-control-sm" type="text" name="name" value="{{ $expense->name->format('d/m/Y') }}">
+										<input class="form-control form-control-sm datepicker" type="text" name="create" value="{{ ($expense->created_at)->format('d/m/Y') }}">
 									</div>
 								</div>
 								<div class="form-group row">

@@ -17,7 +17,7 @@ class ExpenseController extends Controller
     public function index()
     {
         
-        $expense = Expense::where('u_id', Auth::id() )->get();       
+        $expense = Expense::where('u_id', Auth::id() )->orderBy("created_at")->get();       
         $month = date('m');
         $total = Expense::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
 
@@ -46,7 +46,7 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        $create = Carbon::createFromFormat('m/d/Y',$request->create); 
+        $create = Carbon::createFromFormat('d/m/Y',$request->create); 
 
         $expense = new Expense();
         $expense->u_id = Auth::id();
@@ -96,10 +96,13 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, Expense $expense)
     {
+        $create = Carbon::createFromFormat('d/m/Y',$request->create); 
+
         $expense->u_id = Auth::id();
         $expense->name = $request->name;
         $expense->type = $request->type;
         $expense->amount = $request->amount;
+        $expense->created_at = $create->format('Y-m-d');
         if( $expense->save() ){
             $request->session()->flash('status', 'Task was successfully!!!');
             return redirect()->route('expense.index');

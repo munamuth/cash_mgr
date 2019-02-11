@@ -13,11 +13,24 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
-		<div class="col-9 col-sm-6">Your Expense This Month: <span class="h4 text-danger">៛ {{number_format($total)}}</span></div>
-		<div class="col-3 col-sm-6 text-right">
+		<div class="col-12 col-sm-9">
+			<form class="form-inline" action="{{ url('expense/search') }}" method="get">
+				<div class="form-group mr-1">
+					<label class="mr-1">Type </label>
+					<select class="form-control form-control-sm">
+						<option>SELECT TYPE</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-success btn-sm">Search</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-12 col-sm-3 text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
 
 		</div>
+		<div class="col-12 col-sm-12 text-right mt-3">Your Expense This Month: <span class="h4 text-danger">៛ {{number_format($total)}}</span></div>
 	</div>
 	<br>
 	<div class="row animated fadeIn">
