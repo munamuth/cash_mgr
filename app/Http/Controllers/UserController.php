@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         $user = new User();
         $user->name = $request->name;
-        $user->username = $request->email;
+        $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = $request->role;
         $user->password = $request->password;
@@ -83,7 +83,7 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function show(Usr $usr)
+    public function show(User $user)
     {
         return view('user.show');
     }
@@ -94,9 +94,9 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usr $usr)
+    public function edit(User $user)
     {
-        return view('user.edit');
+        return view('user.edit', compact("user"));
     }
 
     /**
@@ -106,9 +106,19 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usr $usr)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        if($user->save()){
+            $request->session()->flash('status', "Success");
+            return redirect()->route('users.index');
+        } else {
+            $request->session()->flash('status', "Success");
+            return back();
+        }
     }
 
     public function changePassword(Request $request, $id)

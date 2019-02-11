@@ -14,7 +14,7 @@
 	<br>
 	<div class="row animated bounceInLeft">
 
-		<div class="col-9 col-sm-6">Your Income This Month: <span class="h4 text-success">$ {{$total}}</span></div>
+		<div class="col-9 col-sm-6">Your Income This Month: <span class="h4 text-success">៛ {{ number_format($total) }}</span></div>
 		<div class="col-3 col-sm-6 text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('income.create') }}"><i class="fa fa-plus"></i> Create</a>
 		</div>
@@ -50,7 +50,7 @@
 								@else
 								<td>NULL</td>
 								@endif
-								<td>$.{{$in->amount}}</td>
+								<td class="text-right text-success font-weight-bold">៛​​ <span class="text-right">{{number_format($in->amount)}}</span></td>
 								<td>{{$in->created_at}}</td>
 								<td class="d-flex">
 									<a class="btn btn-success btn-sm" href="{{ route('income.edit', $in->id) }}"><i class="fa fa-edit"></i> Edit</a>

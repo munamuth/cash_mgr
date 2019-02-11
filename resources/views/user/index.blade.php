@@ -46,8 +46,10 @@
   									<td class="d-flex">
   										<a class="btn btn-warning btn-sm" href="{{ route('user.edit.password', $user->id) }}"><i class="fa fa-edit"></i> Change Password</a>
   										&nbsp;
-  										<button class="btn btn-danger btn-sm" onclick="$('#form-destroy').submit()"><i class="fa fa-trash"></i> Destroy</button>
-  										<form action="{{ route('users.destroy', $user->id) }}" method="post" id="form-destroy">@csrf @method("delete")</form>
+  										<a class="btn btn-warning btn-sm" href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i> Edit</a>
+  										&nbsp;
+  										<button class="btn btn-danger btn-sm" onclick="btnDestory_click({{$user->id}})"><i class="fa fa-trash"></i> Destroy</button>
+  										
   									</td>
   								</tr>
 							@endforeach
@@ -56,5 +58,14 @@
 				</div>
 			</div>
 		</div>
-
+		<form method="post" id="form-destroy">@csrf @method("delete")</form>
+		<script type="text/javascript">
+			btnDestory_click(id){
+				var answer = confirm("Are you sure?");
+				if( answer ){
+					$('#form-destroy').prop("action", "/users/"+ id);
+					$('#form-destroy').submit();
+				}
+			}
+		</script>
 @endsection

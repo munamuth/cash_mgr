@@ -13,7 +13,7 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
-		<div class="col-9 col-sm-6">Your Expense This Month: <span class="h4 text-danger">$ {{$total}}</span></div>
+		<div class="col-9 col-sm-6">Your Expense This Month: <span class="h4 text-danger">៛ {{number_format($total)}}</span></div>
 		<div class="col-3 col-sm-6 text-right">
 			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
 
@@ -50,7 +50,7 @@
 								@else
 								<td>NULL</td>
 								@endif
-								<td class="text-danger font-weight-bold">$ {{$ex->amount}}</td>
+								<td class="text-danger text-right font-weight-bold">៛ {{number_format($ex->amount)}}</td>
 								<td>{{$ex->created_at}}</td>
 								<td class="d-flex">
 									<a class="btn btn-success btn-sm" href="{{ route('expense.edit', $ex->id) }}"><i class="fa fa-edit"></i> Edit</a>
