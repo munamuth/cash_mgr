@@ -45,10 +45,7 @@
 									<label class="text-light font-weight-bold">Username</label>
 								</div> -->
 								<div class="col-12 col-sm-12 m-auto" >
-									<input type="text" name="username" class="form-control" placeholder="Username" style="background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: dotted 1px white;">
+									<input type="text" name="username" class="form-control" placeholder="Username" style="background: transparent;border-radius: 0;border: none;border-bottom: dotted 1px white;">
 								</div>
 							</div>
 							<div class="row form-group">
@@ -56,21 +53,14 @@
 									<label class="text-light font-weight-bold">Password</label>
 								</div> -->
 								<div class="col-12 col-sm-12 m-auto">
-									<input type="password" name="password" class="form-control" placeholder="Password" style="background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: dotted 1px white;">
+									<input type="password" name="password" class="form-control" placeholder="Password" style="background: transparent;border-radius: 0;border: none;border-bottom: dotted 1px white;">
 								</div>
-<<<<<<< HEAD
-								<div class="col-12 col-sm-8">
-									<input type="password" name="password" class="form-control form-control-sm" placeholder="Password">
-=======
+
 							</div>
 
 							<div class="row form-group">
 								<div class="col-12">
 									<input type="checkbox" name="remember_me"> <span class="text-light font-weight-bold">Remember Me</span>
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
 								</div>
 							</div>
 							<div class="row">

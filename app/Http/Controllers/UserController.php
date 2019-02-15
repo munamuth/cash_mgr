@@ -66,7 +66,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-<<<<<<< HEAD
+
         $user->role = $request->role;
         $user->password = bcrypt($request->password);
         if($user->save()){
@@ -75,7 +75,7 @@ class UserController extends Controller
             $request->session()->flash('status', 'Task was not successful!');
         }
         return redirect()->route('users.index');
-=======
+
         $user->phone = $request->phone;
         $user->role = $request->role;
         $user->password = $request->password;
@@ -86,7 +86,7 @@ class UserController extends Controller
             $request->session()->flash('status', "Success");
             return back();
         }
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
+
     }
 
     /**
