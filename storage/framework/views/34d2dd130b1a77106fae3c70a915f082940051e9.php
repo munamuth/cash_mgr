@@ -11,7 +11,9 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
-		<div class="col text-right">
+
+		<div class="col-9 col-sm-6">Your Income This Month: <span class="h4 text-success">៛ <?php echo e(number_format($total)); ?></span></div>
+		<div class="col-3 col-sm-6 text-right">
 			<a class="btn btn-success btn-sm" href="<?php echo e(route('income.create')); ?>"><i class="fa fa-plus"></i> Create</a>
 		</div>
 	</div>
@@ -46,8 +48,8 @@
 								<?php else: ?>
 								<td>NULL</td>
 								<?php endif; ?>
-								<td>$.<?php echo e($in->amount); ?></td>
-								<td><?php echo e($in->created_at); ?></td>
+								<td class="text-right text-success font-weight-bold">៛​​ <span class="text-right"><?php echo e(number_format($in->amount)); ?></span></td>
+								<td><?php echo e($in->created_at->format('d/m/Y')); ?></td>
 								<td class="d-flex">
 									<a class="btn btn-success btn-sm" href="<?php echo e(route('income.edit', $in->id)); ?>"><i class="fa fa-edit"></i> Edit</a>
 									&nbsp;

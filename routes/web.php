@@ -19,6 +19,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/', function(){
 		return view('master');
 	});
+
+	// CASH ROUTER
+
 	Route::resource('/income', 'IncomeController');
 	Route::resource('/expense', 'ExpenseController');
 	Route::resource('/type', 'TypeController');
@@ -26,6 +29,14 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/users/{id}/change/password', 'UserController@changePassword')->name('user.edit.password');
 	Route::post('/users/{id}/change/password', 'UserController@updatePassword')->name('user.update.password');
 	Route::get("/report", "ReportController@index");
+
+
+
+	// TONG TIN ROUTER
+	Route::resource('/tongtin', 'TongTinController');
+	Route::resource('/tongtin/payout', 'TongTinPayOutRecordController');
+	Route::resource('/tongtin/player', 'TongTinPlayerController');
+	Route::resource('/tongtin/player_list', 'TongTinPlayerListController');
 });
 
 Auth::routes();

@@ -15,15 +15,12 @@
 	<div class="row animated bounceInLeft">
 		<div class="col-12 col-sm-9">
 			<form class="form-inline" action="{{ url('expense/search') }}" method="get">
-				<div class="form-group mr-1">
-					<label class="mr-1">Type </label>
+				
+					<label>Type </label>
 					<select class="form-control form-control-sm">
 						<option>SELECT TYPE</option>
 					</select>
-				</div>
-				<div class="form-group">
 					<button class="btn btn-success btn-sm">Search</button>
-				</div>
 			</form>
 		</div>
 		<div class="col-12 col-sm-3 text-right">

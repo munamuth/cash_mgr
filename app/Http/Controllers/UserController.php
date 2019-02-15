@@ -15,9 +15,10 @@ class UserController extends Controller
 
     public function doLogin(Request $request)
     {
-
-
-        if (Auth::attempt(['email'=> $request->username, 'password'=> $request->password])) {
+        $remember = false;
+        if( isset($request->remember_me ))
+            $remember = true;
+        if (Auth::attempt(['email'=> $request->username, 'password'=> $request->password], $remember)) {
             // Authentication passed...
             return redirect()->intended('/');
         } else {

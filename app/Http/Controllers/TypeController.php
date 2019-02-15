@@ -12,7 +12,7 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $types = Type::where("id", ">", 2)->where('u_id', Auth::id())->get();
         return view('cash.type.index', compact("types"));

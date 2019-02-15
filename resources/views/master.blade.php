@@ -7,22 +7,24 @@
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/jquery-ui/jquery-ui.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/animate.css/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/bootstrap/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/fontawesome/css/all.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/fontawesome/css/font-awesome.min.css') }}">
 
 	<script type="text/javascript" src="{{ url('/public/asset/jquery/jquery-3.3.1.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/public/asset/jquery-ui/jquery-ui.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/public/asset/bootstrap/js/bootstrap.min.js') }}"></script>
-	<script type="text/javascript" src="{{ url('/public/asset/fontawesome/js/all.min.js') }}"></script>
 
 	<style type="text/css">
 		body{
 			height: 100vh;
 			overflow: hidden;
 		}
+		table, table td{
+
+		}
 		#second-row, #second-row>div, #second-row>div>ul.menu{
 			height: calc(100vh - 40px);
 		}
-		ul.menu{
+		ul.menu, ul.submenu{
 			padding: 0;
 			list-style: none;
 		}
@@ -42,6 +44,12 @@
 		}
 		ul.menu li a:hover{
 			background: #123;
+		}
+		ul.submenu{
+			display: none;
+		}
+		ul.submenu li a{
+			padding-left: 30px;
 		}
 		.message{
 				display: none;
@@ -81,6 +89,13 @@
 			font-size: 20px;
 			padding: 5px 15px;
 		}
+		.card-footer{
+			background: #3a3b3c!important;
+			color: #fff;
+			font-weight: bolder;
+			font-size: 20px;
+			padding: 5px 15px;
+		}
 	</style>
 	@yield('header')
 </head>
@@ -88,7 +103,7 @@
 	<div class="container-fluid">
 		
 		<div class="row  bg-primary" id="first-row">
-			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 p-3 border-right d-flex">
+			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 p-3 d-flex">
 				<button class="btn btn-success btn-sm text-light d-block d-md-none" id="btnMenu"><i class="fa fa-bars"></i></button>
 				&nbsp;
 				<p class="h4 text-light m-0">
@@ -110,18 +125,34 @@
 		</div>
 
 		<div class="row" id="second-row">
-			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 bg-secondary p-0 d-none d-md-block" id="menu">
+			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-2 bg-secondary p-0 d-none d-md-block" id="menu">
+				<style type="text/css">
+					
+				</style>
 				<ul class="menu">
-					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> Home <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a class="font-weight-bold text-light" href="{{ url('/income') }}"><i class="fa fa-money-check-alt"></i> Income <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a class="font-weight-bold text-light" href="{{ url('/expense') }}"><i class="fa fa-money-bill-alt"></i> Expense <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a class="font-weight-bold text-light" href="{{ url('/type') }}"><i class="fa fa-project-diagram"></i> Types <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
-					<li><a class="font-weight-bold text-light" href="{{ url('/users') }}"><i class="fa fa-users"></i> Users <span class="float-right"><i class="fa fa-angle-down"></i></span></a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> Home </a></li>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money-check-alt"></i> Cash Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+						<ul class="submenu hide">
+							<li><a class="font-weight-bold text-light" href="{{ url('/income') }}"><i class="fa fa-angle-right"></i> Income <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ url('/expense') }}"><i class="fa fa-angle-right"></i> Expense <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ url('/type') }}"><i class="fa fa-angle-right"></i> Types <span class="float-right"></span></a></li>
+						</ul>
+					</li>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money-check-alt"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+						<ul class="submenu hide">
+							<li><a class="font-weight-bold text-light" href="{{ route('tongtin.index') }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('payout.index') }}"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index') }}"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('player.index') }}"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>
+						</ul>
+					</li>
+					
+					<li><a class="font-weight-bold text-light" href="{{ url('/users') }}"><i class="fa fa-users"></i> Users </a></li>
 					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
 
 				</ul>
 			</div>
-			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 overflow-auto" id="container">
+			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-10 overflow-auto" id="container">
 				<br>
 				@yield('body')
 				<br>
@@ -151,6 +182,14 @@
 		 $( function() {
 		    $( ".datepicker" ).datepicker({ dateFormat: 'dd/mm/yy' });
 		  } );
+
+
+		 $('.hasub').click( function(){
+		 	$(this).find('.submenu').fadeToggle(function(){
+		 		$(this).closest('.hasub').toggleClass("bg-success")
+		 	});
+		 	$(this).find('.symbol').toggleClass('fa-angle-down')
+		 });
 	</script>
 </body>
 </html>

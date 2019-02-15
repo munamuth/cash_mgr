@@ -44,8 +44,10 @@
   									<td class="d-flex">
   										<a class="btn btn-warning btn-sm" href="<?php echo e(route('user.edit.password', $user->id)); ?>"><i class="fa fa-edit"></i> Change Password</a>
   										&nbsp;
-  										<button class="btn btn-danger btn-sm" onclick="$('#form-destroy').submit()"><i class="fa fa-trash"></i> Destroy</button>
-  										<form action="<?php echo e(route('users.destroy', $user->id)); ?>" method="post" id="form-destroy"><?php echo csrf_field(); ?> <?php echo method_field("delete"); ?></form>
+  										<a class="btn btn-warning btn-sm" href="<?php echo e(route('users.edit', $user->id)); ?>"><i class="fa fa-edit"></i> Edit</a>
+  										&nbsp;
+  										<button class="btn btn-danger btn-sm" onclick="btnDestory_click(<?php echo e($user->id); ?>)"><i class="fa fa-trash"></i> Destroy</button>
+  										
   									</td>
   								</tr>
 							<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -54,6 +56,15 @@
 				</div>
 			</div>
 		</div>
-
+		<form method="post" id="form-destroy"><?php echo csrf_field(); ?> <?php echo method_field("delete"); ?></form>
+		<script type="text/javascript">
+			btnDestory_click(id){
+				var answer = confirm("Are you sure?");
+				if( answer ){
+					$('#form-destroy').prop("action", "/users/"+ id);
+					$('#form-destroy').submit();
+				}
+			}
+		</script>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('master', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
