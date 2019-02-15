@@ -6,6 +6,7 @@ use App\Expense;
 use Illuminate\Http\Request;
 use App\Type;
 use Auth;
+use Carbon\Carbon;
 class ExpenseController extends Controller
 {
     /**
@@ -15,6 +16,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         if( Auth::user()->role == 1 ){
             $expense = Expense::get();
         } else {
@@ -22,6 +24,14 @@ class ExpenseController extends Controller
         }
 
         return view('cash.expense.index', compact('expense'));
+=======
+        
+        $expense = Expense::where('u_id', Auth::id() )->orderBy("created_at")->get();       
+        $month = date('m');
+        $total = Expense::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
+
+        return view('cash.expense.index', compact('expense', 'total'));
+>>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
     }
 
     /**
@@ -31,7 +41,10 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        $types = Type::where('type_of', "Expense")->get();
+        $types = Type::where('type_of', "Expense")
+                ->where("u_id", Auth::id())
+                ->where("id", '>', 2)
+                ->get();
         return view('cash.expense.create', compact('types'));
     }
 
@@ -43,11 +56,14 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
+        $create = Carbon::createFromFormat('d/m/Y',$request->create); 
+
         $expense = new Expense();
         $expense->u_id = Auth::id();
         $expense->name = $request->name;
         $expense->type = $request->type;
         $expense->amount = $request->amount;
+        $expense->created_at = $create->format('Y-m-d');
         if( $expense->save() )
         {
             $request->session()->flash('status', 'Task was successfully!!!');
@@ -90,10 +106,13 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, Expense $expense)
     {
+        $create = Carbon::createFromFormat('d/m/Y',$request->create); 
+
         $expense->u_id = Auth::id();
         $expense->name = $request->name;
         $expense->type = $request->type;
         $expense->amount = $request->amount;
+        $expense->created_at = $create->format('Y-m-d');
         if( $expense->save() ){
             $request->session()->flash('status', 'Task was successfully!!!');
             return redirect()->route('expense.index');

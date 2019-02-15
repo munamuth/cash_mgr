@@ -13,9 +13,21 @@
 	</div>
 	<br>
 	<div class="row animated bounceInLeft">
-		<div class="col text-right">
-			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
+		<div class="col-12 col-sm-9">
+			<form class="form-inline" action="{{ url('expense/search') }}" method="get">
+				
+					<label>Type </label>
+					<select class="form-control form-control-sm">
+						<option>SELECT TYPE</option>
+					</select>
+					<button class="btn btn-success btn-sm">Search</button>
+			</form>
 		</div>
+		<div class="col-12 col-sm-3 text-right">
+			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
+
+		</div>
+		<div class="col-12 col-sm-12 text-right mt-3">Your Expense This Month: <span class="h4 text-danger">៛ {{number_format($total)}}</span></div>
 	</div>
 	<br>
 	<div class="row animated fadeIn">
@@ -30,7 +42,7 @@
 							<th style="min-width: 200px">User Name</th>
 							@endif
 							<th style="min-width: 150px">Type</th>
-							<th style="min-width: 50px">Amount</th>
+							<th style="min-width: 150px">Amount</th>
 							<th style="min-width: 200px">Date</th>
 							<th style="min-width: 200px">Action</th>
 						</tr>
@@ -48,8 +60,8 @@
 								@else
 								<td>NULL</td>
 								@endif
-								<td>$.{{$ex->amount}}</td>
-								<td>{{$ex->created_at}}</td>
+								<td class="text-danger text-right font-weight-bold">៛ {{number_format($ex->amount)}}</td>
+								<td>{{$ex->created_at->format('d/m/Y')}}</td>
 								<td class="d-flex">
 									<a class="btn btn-success btn-sm" href="{{ route('expense.edit', $ex->id) }}"><i class="fa fa-edit"></i> Edit</a>
 									&nbsp;

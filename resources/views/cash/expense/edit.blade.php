@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col">
 			
-			<form action="{{ route('expense.update', $expense->id) }}" method="post" enctype="multipart/form-data">
+			<form action="{{ route('expense.update', $expense->id) }}" method="post" enctype="multipart/form-data" autocomplete="off">
 				@csrf
 				@method('put')
 				<div class="row">
@@ -21,6 +21,12 @@
 						        </a>
 							</div>
 							<div class="card-body">
+								<div class="form-group row">
+									<div class="col-12 col-sm-6">Date</div>
+									<div class="col-12 col-sm-6">
+										<input class="form-control form-control-sm datepicker" type="text" name="create" value="{{ ($expense->created_at)->format('d/m/Y') }}">
+									</div>
+								</div>
 								<div class="form-group row">
 									<div class="col-12 col-sm-6">Income Name</div>
 									<div class="col-12 col-sm-6">

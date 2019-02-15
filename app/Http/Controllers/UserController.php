@@ -15,9 +15,10 @@ class UserController extends Controller
 
     public function doLogin(Request $request)
     {
-
-
-        if (Auth::attempt(['email'=> $request->username, 'password'=> $request->password])) {
+        $remember = false;
+        if( isset($request->remember_me ))
+            $remember = true;
+        if (Auth::attempt(['email'=> $request->username, 'password'=> $request->password], $remember)) {
             // Authentication passed...
             return redirect()->intended('/');
         } else {
@@ -65,6 +66,7 @@ class UserController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+<<<<<<< HEAD
         $user->role = $request->role;
         $user->password = bcrypt($request->password);
         if($user->save()){
@@ -73,6 +75,18 @@ class UserController extends Controller
             $request->session()->flash('status', 'Task was not successful!');
         }
         return redirect()->route('users.index');
+=======
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->password = $request->password;
+        if($user->save()){
+            $request->session()->flash('status', "Success");
+            return redirect()->route('users.index');
+        } else {
+            $request->session()->flash('status', "Success");
+            return back();
+        }
+>>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
     }
 
     /**
@@ -81,7 +95,7 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function show(Usr $usr)
+    public function show(User $user)
     {
         return view('user.show');
     }
@@ -92,9 +106,9 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function edit(Usr $usr)
+    public function edit(User $user)
     {
-        return view('user.edit');
+        return view('user.edit', compact("user"));
     }
 
     /**
@@ -104,9 +118,19 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Usr $usr)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        if($user->save()){
+            $request->session()->flash('status', "Success");
+            return redirect()->route('users.index');
+        } else {
+            $request->session()->flash('status', "Success");
+            return back();
+        }
     }
 
     public function changePassword(Request $request, $id)
@@ -133,8 +157,14 @@ class UserController extends Controller
      * @param  \App\Usr  $usr
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Usr $usr)
+    public function destroy(Request $request, User $user)
     {
-        //
+        if($user->delete()){
+            $request->session()->flash('status', "Success");
+            return redirect()->route('users.index');
+        } else {
+            $request->session()->flash('status', "Success");
+            return back();
+        }
     }
 }
