@@ -90,7 +90,6 @@
 			padding: 5px 15px;
 		}
 		.card-footer{
-			background: #3a3b3c!important;
 			color: #fff;
 			font-weight: bolder;
 			font-size: 20px;
@@ -140,7 +139,7 @@
 					</li>
 					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money-check-alt"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="{{ route('tongtin.index') }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ url('/tongtin/') }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('payout.index') }}"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index') }}"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('player.index') }}"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>

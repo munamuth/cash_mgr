@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 	// TONG TIN ROUTER
-	Route::resource('/tongtin', 'TongTinController');
+	Route::resource('/tongtins', 'TongTinController');
 	Route::resource('/tongtin/payout', 'TongTinPayOutRecordController');
 	Route::resource('/tongtin/player', 'TongTinPlayerController');
 	Route::resource('/tongtin/player_list', 'TongTinPlayerListController');
