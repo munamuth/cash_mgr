@@ -45,7 +45,10 @@
 									<label class="text-light font-weight-bold">Username</label>
 								</div> -->
 								<div class="col-12 col-sm-12 m-auto" >
-									<input type="text" name="username" class="form-control" placeholder="Username" style="background: transparent;border-radius: 0;border: none;border-bottom: dotted 1px white;">
+									<input type="text" name="username" class="form-control" placeholder="Username" style="background: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: dotted 1px white;">
 								</div>
 							</div>
 							<div class="row form-group">
@@ -53,9 +56,11 @@
 									<label class="text-light font-weight-bold">Password</label>
 								</div> -->
 								<div class="col-12 col-sm-12 m-auto">
-									<input type="password" name="password" class="form-control" placeholder="Password" style="background: transparent;border-radius: 0;border: none;border-bottom: dotted 1px white;">
+									<input type="password" name="password" class="form-control" placeholder="Password" style="background: transparent;
+    border-radius: 0;
+    border: none;
+    border-bottom: dotted 1px white;">
 								</div>
-
 							</div>
 
 							<div class="row form-group">

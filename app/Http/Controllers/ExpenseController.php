@@ -16,22 +16,12 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        if( Auth::user()->role == 1 ){
-            $expense = Expense::get();
-        } else {
-            $expense = Expense::where('u_id', Auth::id() )->get();
-        }
-
-        return view('cash.expense.index', compact('expense'));
-=======
         
         $expense = Expense::where('u_id', Auth::id() )->orderBy("created_at")->get();       
         $month = date('m');
         $total = Expense::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
 
         return view('cash.expense.index', compact('expense', 'total'));
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
     }
 
     /**

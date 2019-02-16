@@ -10,11 +10,7 @@
 	<div class="row animated fadeIn">
 		<div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6 m-auto">
 			<div class="card animated zoomIn">
-<<<<<<< HEAD
-				<div class="card-header">
-=======
 				<div class="card-header bg-success text-light">
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
 					New User
 					<a class="close" href="{{ route('type.index') }}">
 			          <span aria-hidden="true">&times;</span>
@@ -44,8 +40,6 @@
 
 						<div class="row form-group">
 							<div class="col-12 col-sm-4">
-<<<<<<< HEAD
-=======
 								<LABEL>Phone Number</LABEL>
 							</div>
 							<div class="col-12 col-sm-8">
@@ -55,7 +49,6 @@
 
 						<div class="row form-group">
 							<div class="col-12 col-sm-4">
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
 								<LABEL>Role</LABEL>
 							</div>
 							<div class="col-12 col-sm-8">

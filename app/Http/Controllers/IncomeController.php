@@ -16,14 +16,6 @@ class IncomeController extends Controller
      */
     public function index()
     {
-<<<<<<< HEAD
-        if( Auth::user()->role == 1 ){
-            $income = Income::get();
-        } else {
-            $income = Income::where('u_id', Auth::id() )->get();
-        }
-=======
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
         
         $income = Income::where('u_id', Auth::id() )->orderBy('created_at')->get();
         $month = date('m');
@@ -39,13 +31,9 @@ class IncomeController extends Controller
     public function create()
     {   
         $types = Type::where('type_of', "Income")
-<<<<<<< HEAD
-                    ->where('u_id', Auth::id() )->get();
-=======
                     ->where("u_id", Auth::id())
                     ->where("id", '>', 2)
                     ->get();
->>>>>>> d544728f4ebbb7472c31caca9a946568298d3bdf
         return view('cash.income.create', compact("types"));
     }
 
