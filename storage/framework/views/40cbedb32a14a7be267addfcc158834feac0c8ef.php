@@ -140,7 +140,7 @@
 					</li>
 					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="<?php echo e(url('/tongtin/')); ?>"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('tongtins.index')); ?>"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('payout.index')); ?>"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player_list.index')); ?>"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player.index')); ?>"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>

@@ -15,8 +15,7 @@ class TongTinController extends Controller
      */
     public function index()
     {
-        echo "ok";
-        //return view('tongtin.tongtin.index');
+        return view('tongtin.tongtin.index');
     }
 
     /**
@@ -26,7 +25,7 @@ class TongTinController extends Controller
      */
     public function create()
     {
-        //
+        return view('tongtin.tongtin.create');
     }
 
     /**
@@ -59,7 +58,7 @@ class TongTinController extends Controller
      */
     public function edit(TongTin $tongTin)
     {
-        //
+        return view('tongtin.tongtin.edit');
     }
 
     /**
