@@ -130,14 +130,14 @@
 				</style>
 				<ul class="menu">
 					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> Home </a></li>
-					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money-check-alt"></i> Cash Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money"></i> Cash Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
 							<li><a class="font-weight-bold text-light" href="{{ url('/income') }}"><i class="fa fa-angle-right"></i> Income <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ url('/expense') }}"><i class="fa fa-angle-right"></i> Expense <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ url('/type') }}"><i class="fa fa-angle-right"></i> Types <span class="float-right"></span></a></li>
 						</ul>
 					</li>
-					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money-check-alt"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
 							<li><a class="font-weight-bold text-light" href="{{ url('/tongtin/') }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('payout.index') }}"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
@@ -147,7 +147,7 @@
 					</li>
 					
 					<li><a class="font-weight-bold text-light" href="{{ url('/users') }}"><i class="fa fa-users"></i> Users </a></li>
-					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out"></i> Logout</a></li>
 
 				</ul>
 			</div>
