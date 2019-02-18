@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('header')
-<meta http-equiv="refresh" content="5">
 @endsection
 
 @section('body')
