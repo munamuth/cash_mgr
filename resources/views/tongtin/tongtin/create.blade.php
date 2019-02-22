@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
-                <p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> <a href="{{ route('tongtins.index') }}">Tong Tin</a> / Create New</p>
+                <p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> <a href="{{ route('tongtins.index', $local ) }}">{{ trans('lang.tongtin') }}</a> / {{ trans('lang.create') }}</p>
             </div>
         </div>
     </div>
@@ -17,13 +17,13 @@
         <div class="row">
             <div class="col">
                 <!-- START FORM CREATE -->
-                <form action="{{ route('tongtins.store') }}" method="post" autocomplete="off">
+                <form action="{{ route('tongtins.store', $local ) }}" method="post" autocomplete="off">
                 @csrf
                 <!-- START CARD  -->
                     <div class="card">
                         <div class="card-header">
-                            Create New Player
-                            <a class="close" href="{{ route('tongtins.index') }}">
+                            {{ trans('lang.new_tongtin') }}
+                            <a class="close" href="{{ route('tongtins.index', $local ) }}">
                                 <span aria-hidden="true">&times;</span>
                             </a>
                         </div>
@@ -32,10 +32,10 @@
 
                             <div class="form-group ">
                                 <div class="row">
-                                    <label for="name" class="col-12 col-sm-12 col-md-4">Leader's name</label>
+                                    <label for="name" class="col-12 col-sm-12 col-md-4">{{ trans('lang.leader_name') }}</label>
                                     <div class="col-12 col-sm-12 col-md-8">
                                         <select name="leader_id" class="form-control form-control-sm">
-                                            <option value="0">Select Leader</option>
+                                            <option value="0">{{ trans('lang.select_leader') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -43,9 +43,9 @@
 
                             <div class="form-group">
                                 <div class="row">
-                                    <label for="name" class="col-12 col-sm-12 col-md-4">Price</label>
+                                    <label for="name" class="col-12 col-sm-12 col-md-4">{{ trans('lang.price') }}</label>
                                     <div class="col-12 col-sm-12 col-md-8">
-                                        <input type="text" name="price" class="form-control form-control-sm" placeholder="Tong Tin Price">
+                                        <input type="text" name="price" class="form-control form-control-sm" placeholder="{{ trans('lang.tongtin_price') }}">
                                     </div>
                                 </div>
                             </div>
@@ -53,10 +53,10 @@
 
                             <div class="form-group ">
                                 <div class="row">
-                                    <label for="name" class="col-12 col-sm-12 col-md-4">Payout Type</label>
+                                    <label for="name" class="col-12 col-sm-12 col-md-4">{{ trans('lang.payment_type') }}</label>
                                     <div class="col-12 col-sm-12 col-md-8">
                                         <select name="leader_id" class="form-control form-control-sm">
-                                            <option value="0">Select payout type</option>
+                                            <option value="0">{{ trans('lang.select_payment_type') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                     </div>
                     <div class="card-footer bg-secondary">
                         <div class="text-right">
-                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-download"></i> Save</button>
+                        <button type="submit" class="btn btn-success btn-sm"><i class="fa fa-download"></i> {{ trans('lang.price') }}</button>
                         </div>
                     </div>
                     <!-- END OF CARD -->

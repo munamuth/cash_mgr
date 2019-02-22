@@ -8,11 +8,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-sm-6">
-                <p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> Tong Tin Player</p>
+                <p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> {{ trans('lang.player') }}</p>
             </div>
             <div class="col-12 col-sm-6">
                 <div class="text-right">
-                    <a href="{{ route('player.create') }}" class="btn btn-success btn-sm"><i class="fa fa-plus"></i> Create</a>
+                    <a href="{{ route('player.create', $local) }}" class="btn btn-success btn-sm"><i class="fa fa-plus"> {{ trans('lang.create') }}</i> </a>
                 </div>
 
             </div>
@@ -28,11 +28,11 @@
                             <table class="table table-tripped">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>Address</th>
-                                        <th>Action</th>
+                                        <th>{{ trans('lang.no') }}</th>
+                                        <th>{{ trans('lang.name') }}</th>
+                                        <th>{{ trans('lang.phone') }}</th>
+                                        <th>{{ trans('lang.address') }}</th>
+                                        <th>{{ trans('lang.action') }}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,12 +43,12 @@
                                         <td>{{$player->phone}}</td>
                                         <td>{{$player->address}}</td>
                                         <td class="d-flex">
-                                            <a href="{{ route('player.edit', 1) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> Edit</a>
-                                            <a href="#" class="btn btn-info btn-sm" onclick ="btnDetail_click({{$player->id}})"><i class="fa fa-eye"></i> Detail</a>
-                                            <form action="{{ route('player.destroy', $player->id) }}" method="post">
+                                            <a href="{{ route('player.edit', [$local, $player->id]) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i> {{ trans('lang.edit') }}</a>
+                                            <a href="#" class="btn btn-info btn-sm" onclick ="btnDetail_click({{$player->id}})"><i class="fa fa-eye"></i> {{ trans('lang.show') }}</a>
+                                            <form action="{{ route('player.destroy', [$local, $player->id]) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Destroy</button>
+                                                <button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> {{ trans('lang.destroy') }}</button>
                                             </form>
 
                                         </td>
@@ -70,7 +70,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
+                    <h5 class="modal-title">{{ trans('lang.show') }}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

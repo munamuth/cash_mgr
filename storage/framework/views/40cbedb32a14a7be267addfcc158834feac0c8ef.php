@@ -100,13 +100,22 @@
 </head>
 <body>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col pt-2 pb-2 text-right">
+				<a href="<?php echo e(url('/kh')); ?>" class="btn btn-warning btn-sm">ខ្មែរ</a>
+				<a href="<?php echo e(url('/en')); ?>" class="btn btn-warning btn-sm">Egnlish</a>
+			</div>
+		</div>	
+	</div>
+	<div class="container-fluid">
 		
 		<div class="row  bg-primary" id="first-row">
 			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 p-3 d-flex">
 				<button class="btn btn-success btn-sm text-light d-block d-md-none" id="btnMenu"><i class="fa fa-bars"></i></button>
 				&nbsp;
 				<p class="h4 text-light m-0">
-				Cash Management System
+				<?php echo e(trans('lang.cash_management_system')); ?>
+
 				</p>
 			</div>
 			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 p-3 text-right float-righ d-none d-md-block">
@@ -125,34 +134,38 @@
 		</div>
 
 		<div class="row" id="second-row">
-			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-2 bg-secondary p-0 d-none d-md-block" id="menu">
+			<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-secondary p-0 d-none d-md-block" id="menu">
 				<style type="text/css">
 					
 				</style>
 				<ul class="menu">
-					<li><a class="font-weight-bold text-light" href="<?php echo e(url('/')); ?>"><i class="fa fa-home"></i> Home </a></li>
-					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money"></i> Cash Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+					<li><a class="font-weight-bold text-light" href="<?php echo e(url('/')); ?>"><i class="fa fa-home"></i> <?php echo e(trans('lang.home')); ?> </a></li>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money"></i> <?php echo e(trans('lang.cash_management')); ?><span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="<?php echo e(url('/income')); ?>"><i class="fa fa-angle-right"></i> Income <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="<?php echo e(url('/expense')); ?>"><i class="fa fa-angle-right"></i> Expense <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="<?php echo e(url('/type')); ?>"><i class="fa fa-angle-right"></i> Types <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('income.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.income')); ?> <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('expense.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.expense')); ?> <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('type.index', $local)); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.type')); ?> <span class="float-right"></span></a></li>
 						</ul>
 					</li>
-					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> <?php echo e(trans('lang.tongtin_management')); ?> <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="<?php echo e(route('tongtins.index')); ?>"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="<?php echo e(route('payout.index')); ?>"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player_list.index')); ?>"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player.index')); ?>"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('tongtins.index', $local)); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.tongtin')); ?> <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('payout.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.payment_record')); ?> <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player_list.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.player_list')); ?> <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.player')); ?><span class="float-right"></span></a></li>
 						</ul>
 					</li>
 					
-					<li><a class="font-weight-bold text-light" href="<?php echo e(url('/users')); ?>"><i class="fa fa-users"></i> Users </a></li>
-					<li><a class="font-weight-bold text-light" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out"></i> Logout</a></li>
+					<li><a class="font-weight-bold text-light" href="<?php echo e(route('users.index', $local)); ?>"><i class="fa fa-users"></i> <?php echo e(trans('lang.users')); ?> </a></li>
+					<li><a class="font-weight-bold text-light" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out"></i> <?php echo e(trans('lang.logout')); ?></a></li>
+					
+					
+
+					
 
 				</ul>
 			</div>
-			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-10 overflow-auto" id="container">
+			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 overflow-auto" id="container">
 				<br>
 				<?php echo $__env->yieldContent('body'); ?>
 				<br>
@@ -165,6 +178,8 @@
 		 	<p class="m-0 status"><?php echo e(session('status')); ?></p>
 		</div>
 	</div>
+
+
 	<script type="text/javascript">
 		$('#btnMenu').click( function(){
 			$("#menu").toggleClass('d-none')
@@ -191,5 +206,6 @@
 		 	$(this).find('.symbol').toggleClass('fa-angle-down')
 		 });
 	</script>
+	<?php echo $__env->yieldContent('script'); ?>
 </body>
 </html>

@@ -16,8 +16,9 @@
 
 
 Route::middleware(['auth'])->group(function () {
-	Route::get('/', function(){
-		$local = 'en';
+	Route::get('/{local?}', function($local = 'en'){
+		app()->setlocale($local);
+		
 		return view('master', compact('local'));
 	});
 
@@ -41,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Auth::routes();
-Route::get('/{local}/login', 'UserController@login')->name('login');
-Route::post('/{local}/login', 'UserController@doLogin')->name('user.doLogin');
+Route::get('/login', 'UserController@login')->name('login');
+Route::post('/login', 'UserController@doLogin')->name('user.doLogin');
+
+
 

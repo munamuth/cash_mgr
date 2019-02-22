@@ -6,7 +6,7 @@
 <div class="">
 	<div class="row">
 		<div class="col">
-			<p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> Income Records </p>
+			<p><i class="fa fa-angle-right" style="padding-top: 2px;"></i> <?php echo e(trans('lang.income_record')); ?> </p>
 		</div>
 	</div>
 	<br>
@@ -14,7 +14,7 @@
 
 		<div class="col-9 col-sm-6">Your Income This Month: <span class="h4 text-success">៛ <?php echo e(number_format($total)); ?></span></div>
 		<div class="col-3 col-sm-6 text-right">
-			<a class="btn btn-success btn-sm" href="<?php echo e(route('income.create')); ?>"><i class="fa fa-plus"></i> Create</a>
+			<a class="btn btn-success btn-sm" href="<?php echo e(route('income.create', $local)); ?>"><i class="fa fa-plus"></i> <?php echo e(trans('lang.create')); ?></a>
 		</div>
 	</div>
 	<br>
@@ -24,15 +24,15 @@
 				<table class="table table-tripped">
 					<thead>
 						<tr>
-							<th style="min-width: 15px">ID</th>
-							<th style="min-width: 200px">Name</th>
+							<th style="min-width: 15px"><?php echo e(trans('lang.no')); ?></th>
+							<th style="min-width: 200px"><?php echo e(trans('lang.name')); ?></th>
 							<?php if(Auth::user()->role == 1): ?>
-							<th style="min-width: 150px">User Name</th>
+							<th style="min-width: 150px"><?php echo e(trans('lang.username')); ?></th>
 							<?php endif; ?>
-							<th style="min-width: 150px">Type</th>
-							<th style="min-width: 50px">Amount</th>
-							<th style="min-width: 200px">Date</th>
-							<th style="min-width: 200px">Action</th>
+							<th style="min-width: 150px"><?php echo e(trans('lang.type')); ?></th>
+							<th style="min-width: 50px"><?php echo e(trans('lang.amount')); ?></th>
+							<th style="min-width: 200px"><?php echo e(trans('lang.date')); ?></th>
+							<th style="min-width: 200px"><?php echo e(trans('lang.action')); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -51,12 +51,12 @@
 								<td class="text-right text-success font-weight-bold">៛​​ <span class="text-right"><?php echo e(number_format($in->amount)); ?></span></td>
 								<td><?php echo e($in->created_at->format('d/m/Y')); ?></td>
 								<td class="d-flex">
-									<a class="btn btn-success btn-sm" href="<?php echo e(route('income.edit', $in->id)); ?>"><i class="fa fa-edit"></i> Edit</a>
+									<a class="btn btn-success btn-sm" href="<?php echo e(route('income.edit', [$local ,$in->id])); ?>"><i class="fa fa-edit"></i> <?php echo e(trans('lang.edit')); ?></a>
 									&nbsp;
-									<form action="<?php echo e(route('income.destroy', $in->id)); ?>" method="post">
+									<form action="<?php echo e(route('income.destroy',[$local, $in->id])); ?>" method="post">
 										<?php echo csrf_field(); ?>
 										<?php echo method_field('delete'); ?>
-									<button type="submit" class="btn btn-danger btn-sm" href="<?php echo e(route('income.show', $in->id)); ?>"><i class="fa fa-trash"></i> Destroy</button>
+									<button type="submit" class="btn btn-danger btn-sm" href="<?php echo e(route('income.show',[$local ,$in->id])); ?>"><i class="fa fa-trash"></i> <?php echo e(trans('lang.destroy')); ?></button>
 									</form>
 								</td>
 							</tr>

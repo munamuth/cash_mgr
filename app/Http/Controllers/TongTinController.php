@@ -8,14 +8,17 @@ use App\Http\Controllers\Controller;
 
 class TongTinController extends Controller
 {
+    public function __construct(Request $request){
+        app()->setlocale($request->local);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($local)
     {
-        return view('tongtin.tongtin.index');
+        return view('tongtin.tongtin.index', compact('local') );
     }
 
     /**
@@ -23,9 +26,9 @@ class TongTinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {
-        return view('tongtin.tongtin.create');
+        return view('tongtin.tongtin.create', compact('local'));
     }
 
     /**
@@ -34,7 +37,7 @@ class TongTinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $local)
     {
         //
     }
@@ -45,7 +48,7 @@ class TongTinController extends Controller
      * @param  \App\TongTin  $tongTin
      * @return \Illuminate\Http\Response
      */
-    public function show(TongTin $tongTin)
+    public function show($local, TongTin $tongTin)
     {
         //
     }
@@ -56,9 +59,9 @@ class TongTinController extends Controller
      * @param  \App\TongTin  $tongTin
      * @return \Illuminate\Http\Response
      */
-    public function edit(TongTin $tongTin)
+    public function edit($local, TongTin $tongTin)
     {
-        return view('tongtin.tongtin.edit');
+        return view('tongtin.tongtin.edit', compact('local'));
     }
 
     /**
@@ -68,7 +71,7 @@ class TongTinController extends Controller
      * @param  \App\TongTin  $tongTin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TongTin $tongTin)
+    public function update(Request $request, $local, TongTin $tongTin)
     {
         //
     }
@@ -79,7 +82,7 @@ class TongTinController extends Controller
      * @param  \App\TongTin  $tongTin
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TongTin $tongTin)
+    public function destroy(Request $request, $local, TongTin $tongTin)
     {
         //
     }

@@ -7,7 +7,7 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' />
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/animate.css/animate.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/bootstrap/css/bootstrap.min.css') }}">
-	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/fontawesome/css/all.min.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url('/public/asset/fontawesome/css/font-awesome.min.css') }}">
 
 	<script type="text/javascript" src="{{ url('/public/asset/jquery/jquery-3.3.1.js') }}"></script>
 	<script type="text/javascript" src="{{ url('/public/asset/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -15,15 +15,6 @@
 	<style type="text/css">
 		body{
 			background-image: url("{{ url('/public/asset/logo/1.jpg') }}");
-		}
-		input::placeholder {
-		  color: white!important;
-		  font-size: 10px;
-		}
-		input{
-			color: white!important;
-			font-weight: bold!important;
-			font-size: 14px;
 		}
 	</style>
 </head>
@@ -35,7 +26,7 @@
 				<div class="form-group text-center pt-5">
 					{{session('status')}}
 				</div>
-				<div class="card" style="background: #111fff11;">
+				<div class="card" style="background: #111fff00;">
 					<div class="card-header text-light font-weight-bold"><i class="fa fa-user"></i> Login</div>
 					<form action="{{ route('user.doLogin') }}" method="post" autocomplete="off">
 						@csrf
@@ -45,10 +36,7 @@
 									<label class="text-light font-weight-bold">Username</label>
 								</div> -->
 								<div class="col-12 col-sm-12 m-auto" >
-									<input type="text" name="username" class="form-control" placeholder="Username" style="background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: dotted 1px white;">
+									<input type="text" name="username" class="form-control form-control-sm" placeholder="Username">
 								</div>
 							</div>
 							<div class="row form-group">
@@ -56,10 +44,7 @@
 									<label class="text-light font-weight-bold">Password</label>
 								</div> -->
 								<div class="col-12 col-sm-12 m-auto">
-									<input type="password" name="password" class="form-control" placeholder="Password" style="background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: dotted 1px white;">
+									<input type="password" name="password" class="form-control form-control-sm" placeholder="Password">
 								</div>
 							</div>
 
@@ -70,7 +55,7 @@
 							</div>
 							<div class="row">
 								<div class="col text-right">
-									<button type="submit" class="btn btn-success btn-sm"><i class="fa fa-sign-in-alt"></i> Login</button>
+									<button type="submit" class="btn btn-success btn-sm"><i class="fa fa-sign-in-alt"></i><i class="fa fa-sign-in"></i> Login</button>
 								</div>
 							</div>
 						</div>

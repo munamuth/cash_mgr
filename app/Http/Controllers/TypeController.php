@@ -7,24 +7,28 @@ use Illuminate\Http\Request;
 use Auth;
 class TypeController extends Controller
 {
+
+    public function __construct(Request $request){
+        app()->setlocale($request->local);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $local)
     {
         $types = Type::where("id", ">", 2)->where('u_id', Auth::id())->get();
-        return view('cash.type.index', compact("types"));
+        return view('cash.type.index', compact("types", 'local'));
     }
 
-    public function getAll(){
+    public function getAll($local){
         if( Auth::user()->role == 1 && Auth::id() == 1 ){
             $types = Type::where("id", ">", 2)->get();
         } else if (Auth::user()->role == 1 && Auth::id() != 1 ) {
              $types = Type::get();
         }
-        return view('cash.type.index', compact("types"));
+        return view('cash.type.index', compact("types", 'local'));
     }
 
     /**
@@ -32,10 +36,10 @@ class TypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {
         
-        return view('cash.type.create');
+        return view('cash.type.create', compact('local') );
     }
 
     /**
@@ -44,7 +48,7 @@ class TypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $local)
     {
         $type = new Type();
         $type->name = $request->name;
@@ -55,7 +59,7 @@ class TypeController extends Controller
         } else {
             $request->session()->flash('status', 'Task was not successful!');
         }
-        return redirect(route('type.index'));
+        return redirect(route('type.index', $local));
     }
 
     /**
@@ -75,9 +79,9 @@ class TypeController extends Controller
      * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit($local, Type $type)
     {
-         return view('cash.type.edit', compact('type'));
+         return view('cash.type.edit', compact('type', 'local'));
     }
 
     /**
@@ -87,7 +91,7 @@ class TypeController extends Controller
      * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Type $type)
+    public function update(Request $request, $local, Type $type)
     {
         $type->name = $request->name;
         $type->type_of = $request->type_of;
@@ -96,7 +100,7 @@ class TypeController extends Controller
         } else {
             $request->session()->flash('status', 'Task was not successful!');
         }
-        return redirect(route('type.index'));
+        return redirect(route('type.index', $local));
     }
 
     /**
@@ -105,13 +109,13 @@ class TypeController extends Controller
      * @param  \App\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Type $type)
+    public function destroy(Request $request, $local,  Type $type)
     {
         if( $type->delete() ){
             $request->session()->flash('status', 'Task was successful!');
         } else {
             $request->session()->flash('status', 'Task was not successful!');
         }
-        return redirect(route('type.index'));
+        return redirect(route('type.index', $local));
     }
 }

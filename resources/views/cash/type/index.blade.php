@@ -9,7 +9,7 @@
 	<br>
 	<div class="row animated bounceInLeft">
 		<div class="col text-right">
-			<a class="btn btn-success btn-sm" href="{{ route('type.create') }}"><i class="fa fa-plus"></i> Create</a>
+			<a class="btn btn-success btn-sm" href="{{ route('type.create', $local) }}"><i class="fa fa-plus"></i> {{ trans('lang.create') }}</a>
 		</div>
 	</div>
 	<br>
@@ -19,15 +19,15 @@
 				<table class="table table-tripped">
 					<thead>
 						<tr>
-							<th style="min-width: 10px">ID</th>
-							<th style="min-width: 150px">Name</th>							
+							<th style="min-width: 10px">{{ trans('lang.no') }}</th>
+							<th style="min-width: 150px">{{ trans('lang.name') }}</th>							
 							@if( Auth::user()->role == 1 )
-							<th style="min-width: 150px">Creator</th>
+							<th style="min-width: 150px">{{ trans('lang.creator') }}</th>
 							@endif
-							<th style="min-width: 100px">Type Of</th>
-							<th style="min-width: 200px">Created</th>
-							<th style="min-width: 200px">Updated</th>
-							<th style="min-width: 200px">Action</th>
+							<th style="min-width: 100px">{{ trans('lang.create') }}</th>
+							<th style="min-width: 200px">{{ trans('lang.created') }}</th>
+							<th style="min-width: 200px">{{ trans('lang.updated') }}</th>
+							<th style="min-width: 200px">{{ trans('lang.action') }}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -60,12 +60,12 @@
 							<td>{{$type->created_at}}</td>
 							<td>{{$type->updated_at}}</td>
 							<td class="d-flex">
-								<a class="btn btn-warning btn-sm" href="{{ route('type.edit', $type->id) }}"><i class="fa fa-edit"></i> Edit</a>
+								<a class="btn btn-warning btn-sm" href="{{ route('type.edit', [$local, $type->id]) }}"><i class="fa fa-edit"></i> {{ trans('lang.edit') }}</a>
 									&nbsp;
-								<form action="{{ route('type.destroy', $type->id) }}" method="post">
+								<form action="{{ route('type.destroy', [$local, $type->id]) }}" method="post">
 									@csrf
 									@method('delete')
-									<button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Destroy</button>
+									<button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> {{ trans('lang.destroy') }}</button>
 								</form>
 							</td>
 						</tr>

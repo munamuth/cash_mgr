@@ -9,7 +9,7 @@
 			<div class="col">
 				<div class="text-right">
 					@if( Auth::User()->role == 1)
-					<a class="btn btn-success btn-sm" href="{{ route('users.create') }}"><i class="fa fa-plus"></i> Create</a>
+					<a class="btn btn-success btn-sm" href="{{ route('users.create', $local) }}"><i class="fa fa-plus"></i> {{ trans('lang.create') }}</a>
 					@endif
 				</div>
 			</div>
@@ -21,13 +21,13 @@
 					<table class="table table-stripped">
 						<thead>
 							<tr>
-								<th style="min-width: 10px;">ID</th>
-								<th style="min-width: 150px;">Name</th>
-								<th style="min-width: 150px;">Username</th>
-								<th style="min-width: 150px;">Role</th>
-								<th style="min-width: 200px;">Created</th>
-								<th style="min-width: 200px;">Updated</th>
-								<th style="min-width: 300px;">Action</th>
+								<th style="min-width: 10px;">{{ trans('lang.no') }}</th>
+								<th style="min-width: 150px;">{{ trans('lang.name') }}</th>
+								<th style="min-width: 150px;">{{ trans('lang.username') }}</th>
+								<th style="min-width: 150px;">{{ trans('lang.role') }}</th>
+								<th style="min-width: 200px;">{{ trans('lang.created') }}</th>
+								<th style="min-width: 200px;">{{ trans('lang.updated') }}</th>
+								<th style="min-width: 300px;">{{ trans('lang.action') }}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,11 +44,11 @@
   									<td>{{ $user->created_at }}</td>
   									<td>{{ $user->updated_at }}</td>
   									<td class="d-flex">
-  										<a class="btn btn-warning btn-sm" href="{{ route('user.edit.password', $user->id) }}"><i class="fa fa-edit"></i> Change Password</a>
-  										&nbsp;
-  										<a class="btn btn-warning btn-sm" href="{{ route('users.edit', $user->id) }}"><i class="fa fa-edit"></i> Edit</a>
-  										&nbsp;
-  										<button class="btn btn-danger btn-sm" onclick="btnDestory_click({{$user->id}})"><i class="fa fa-trash"></i> Destroy</button>
+  										<a class="btn btn-info btn-sm" href="{{ route('user.edit.password', [$local, $user->id]) }}"><i class="fa fa-edit"></i> {{ trans('lang.change_password') }}</a>
+  									
+  										<a class="btn btn-warning btn-sm" href="{{ route('users.edit', [$local, $user->id]) }}"><i class="fa fa-edit"></i> {{ trans('lang.edit') }}</a>
+  									
+  										<button class="btn btn-danger btn-sm" onclick="btnDestory_click({{$user->id}})"><i class="fa fa-trash"></i> {{ trans('lang.destroy') }}</button>
   										
   									</td>
   								</tr>

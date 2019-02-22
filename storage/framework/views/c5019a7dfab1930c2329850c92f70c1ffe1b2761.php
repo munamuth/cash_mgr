@@ -7,7 +7,7 @@
 			<div class="col">
 				<div class="text-right">
 					<?php if( Auth::User()->role == 1): ?>
-					<a class="btn btn-success btn-sm" href="<?php echo e(route('users.create')); ?>"><i class="fa fa-plus"></i> Create</a>
+					<a class="btn btn-success btn-sm" href="<?php echo e(route('users.create', $local)); ?>"><i class="fa fa-plus"></i> <?php echo e(trans('lang.create')); ?></a>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -19,13 +19,13 @@
 					<table class="table table-stripped">
 						<thead>
 							<tr>
-								<th style="min-width: 10px;">ID</th>
-								<th style="min-width: 150px;">Name</th>
-								<th style="min-width: 150px;">Username</th>
-								<th style="min-width: 150px;">Role</th>
-								<th style="min-width: 200px;">Created</th>
-								<th style="min-width: 200px;">Updated</th>
-								<th style="min-width: 300px;">Action</th>
+								<th style="min-width: 10px;"><?php echo e(trans('lang.no')); ?></th>
+								<th style="min-width: 150px;"><?php echo e(trans('lang.name')); ?></th>
+								<th style="min-width: 150px;"><?php echo e(trans('lang.username')); ?></th>
+								<th style="min-width: 150px;"><?php echo e(trans('lang.role')); ?></th>
+								<th style="min-width: 200px;"><?php echo e(trans('lang.created')); ?></th>
+								<th style="min-width: 200px;"><?php echo e(trans('lang.updated')); ?></th>
+								<th style="min-width: 300px;"><?php echo e(trans('lang.action')); ?></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,11 +42,11 @@
   									<td><?php echo e($user->created_at); ?></td>
   									<td><?php echo e($user->updated_at); ?></td>
   									<td class="d-flex">
-  										<a class="btn btn-warning btn-sm" href="<?php echo e(route('user.edit.password', $user->id)); ?>"><i class="fa fa-edit"></i> Change Password</a>
-  										&nbsp;
-  										<a class="btn btn-warning btn-sm" href="<?php echo e(route('users.edit', $user->id)); ?>"><i class="fa fa-edit"></i> Edit</a>
-  										&nbsp;
-  										<button class="btn btn-danger btn-sm" onclick="btnDestory_click(<?php echo e($user->id); ?>)"><i class="fa fa-trash"></i> Destroy</button>
+  										<a class="btn btn-info btn-sm" href="<?php echo e(route('user.edit.password', [$local, $user->id])); ?>"><i class="fa fa-edit"></i> <?php echo e(trans('lang.change_password')); ?></a>
+  									
+  										<a class="btn btn-warning btn-sm" href="<?php echo e(route('users.edit', [$local, $user->id])); ?>"><i class="fa fa-edit"></i> <?php echo e(trans('lang.edit')); ?></a>
+  									
+  										<button class="btn btn-danger btn-sm" onclick="btnDestory_click(<?php echo e($user->id); ?>)"><i class="fa fa-trash"></i> <?php echo e(trans('lang.destroy')); ?></button>
   										
   									</td>
   								</tr>

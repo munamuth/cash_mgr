@@ -100,13 +100,21 @@
 </head>
 <body>
 	<div class="container-fluid">
+		<div class="row">
+			<div class="col pt-2 pb-2 text-right">
+				<a href="{{ url('/kh') }}" class="btn btn-warning btn-sm">ខ្មែរ</a>
+				<a href="{{ url('/en') }}" class="btn btn-warning btn-sm">Egnlish</a>
+			</div>
+		</div>	
+	</div>
+	<div class="container-fluid">
 		
 		<div class="row  bg-primary" id="first-row">
 			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 p-3 d-flex">
 				<button class="btn btn-success btn-sm text-light d-block d-md-none" id="btnMenu"><i class="fa fa-bars"></i></button>
 				&nbsp;
 				<p class="h4 text-light m-0">
-				Cash Management System
+				{{ trans('lang.cash_management_system') }}
 				</p>
 			</div>
 			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 p-3 text-right float-righ d-none d-md-block">
@@ -129,25 +137,29 @@
 					
 				</style>
 				<ul class="menu">
-					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> Home </a></li>
-					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money"></i> Cash Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> {{ trans('lang.home') }} </a></li>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money"></i> {{ trans('lang.cash_management') }}<span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="{{ route('income.index', $local ) }}"><i class="fa fa-angle-right"></i> Income <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('expense.index', $local ) }}"><i class="fa fa-angle-right"></i> Expense <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('type.index', $local) }}"><i class="fa fa-angle-right"></i> Types <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('income.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.income') }} <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('expense.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.expense') }} <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('type.index', $local) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.type') }} <span class="float-right"></span></a></li>
 						</ul>
 					</li>
-					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
+					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> {{ trans('lang.tongtin_management') }} <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="{{ route('tongtins.index', $local) }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('payout.index', $local ) }}"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index', $local ) }}"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('player.index', $local ) }}"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('tongtins.index', $local) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.tongtin') }} <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('payout.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.payment_record') }} <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.player_list') }} <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('player.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.player') }}<span class="float-right"></span></a></li>
 						</ul>
 					</li>
 					
-					<li><a class="font-weight-bold text-light" href="{{ url('/users', $local) }}"><i class="fa fa-users"></i> Users </a></li>
-					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out"></i> Logout</a></li>
+					<li><a class="font-weight-bold text-light" href="{{ route('users.index', $local) }}"><i class="fa fa-users"></i> {{ trans('lang.users') }} </a></li>
+					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out"></i> {{ trans('lang.logout') }}</a></li>
+					
+					
+
+					
 
 				</ul>
 			</div>

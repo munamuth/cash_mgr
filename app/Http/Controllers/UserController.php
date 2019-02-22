@@ -8,6 +8,11 @@ use Auth;
 class UserController extends Controller
 {
 
+    public function __construct(Request $request)
+    {
+        app()->setlocale($request->local);
+    }
+
     public function login()
     {
         return view('user.login');
@@ -35,14 +40,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(User $user)
+    public function index($local, User $user)
     {
         if( Auth::user()->role == 1 ){
             $users = $user::get();
         } else {
             $users = $user::where('id', Auth::id() )->get();
         }
-        return view('user.index', compact('users'));
+        return view('user.index', compact('users', 'local'));
     }
 
     /**
@@ -50,9 +55,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {
-        return view('user.create');
+        return view('user.create', compact('local') );
     }
 
     /**

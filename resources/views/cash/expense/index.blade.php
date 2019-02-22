@@ -17,13 +17,13 @@
 				
 					<label>Type </label>
 					<select class="form-control form-control-sm">
-						<option>SELECT TYPE</option>
+						<option>{{ trans('lang.select_type') }}</option>
 					</select>
-					<button class="btn btn-success btn-sm">Search</button>
+					<button class="btn btn-success btn-sm">{{ trans('lang.search') }}</button>
 			</form>
 		</div>
 		<div class="col-12 col-sm-3 text-right">
-			<a class="btn btn-success btn-sm" href="{{ route('expense.create', $local) }}"><i class="fa fa-plus"></i> Create</a>
+			<a class="btn btn-success btn-sm" href="{{ route('expense.create', $local) }}"><i class="fa fa-plus"></i> {{trans('lang.create') }}</a>
 
 		</div>
 		<div class="col-12 col-sm-12 text-right mt-3">Your Expense This Month: <span class="h4 text-danger">៛ {{number_format($total)}}</span></div>
@@ -35,15 +35,15 @@
 				<table class="table table-tripped">
 					<thead>
 						<tr>
-							<th style="min-width: 15px">ID</th>
-							<th style="min-width: 200px">Name</th>
+							<th style="min-width: 15px">{{ trans('lang.no') }}</th>
+							<th style="min-width: 200px">{{ trans('lang.name') }}</th>
 							@if( Auth::user()->role == 1 )
-							<th style="min-width: 200px">User Name</th>
+							<th style="min-width: 200px">{{ trans('lang.username') }}</th>
 							@endif
-							<th style="min-width: 150px">Type</th>
-							<th style="min-width: 150px">Amount</th>
-							<th style="min-width: 200px">Date</th>
-							<th style="min-width: 200px">Action</th>
+							<th style="min-width: 150px">{{ trans('lang.type') }}</th>
+							<th style="min-width: 150px">{{ trans('lang.amount') }}</th>
+							<th style="min-width: 200px">{{ trans('lang.date') }}</th>
+							<th style="min-width: 200px">{{ trans('lang.action') }}</th>
 						</tr>
 					</thead>
 					<tbody>

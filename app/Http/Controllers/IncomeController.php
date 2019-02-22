@@ -9,6 +9,9 @@ use Auth;
 use Carbon\Carbon;
 class IncomeController extends Controller
 {
+    public function __construct(Request $request){
+        app()->setlocale($request->local);
+    }
     /**
      * Display a listing of the resource.
      *

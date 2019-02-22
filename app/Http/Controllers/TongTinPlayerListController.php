@@ -8,14 +8,18 @@ use App\Http\Controllers\Controller;
 
 class TongTinPlayerListController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        App()->setlocale($request->local);
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($local)
     {
-        return view("tongtin.playerlist.index");
+        return view("tongtin.playerlist.index", compact('local') );
     }
 
     /**
@@ -23,7 +27,7 @@ class TongTinPlayerListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {
         //
     }
@@ -34,7 +38,7 @@ class TongTinPlayerListController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $local)
     {
         //
     }
@@ -45,7 +49,7 @@ class TongTinPlayerListController extends Controller
      * @param  \App\TongTinPlayerList  $tongTinPlayerList
      * @return \Illuminate\Http\Response
      */
-    public function show(TongTinPlayerList $tongTinPlayerList)
+    public function show($local, TongTinPlayerList $tongTinPlayerList)
     {
         //
     }
@@ -56,7 +60,7 @@ class TongTinPlayerListController extends Controller
      * @param  \App\TongTinPlayerList  $tongTinPlayerList
      * @return \Illuminate\Http\Response
      */
-    public function edit(TongTinPlayerList $tongTinPlayerList)
+    public function edit($local, TongTinPlayerList $tongTinPlayerList)
     {
         //
     }
@@ -68,7 +72,7 @@ class TongTinPlayerListController extends Controller
      * @param  \App\TongTinPlayerList  $tongTinPlayerList
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TongTinPlayerList $tongTinPlayerList)
+    public function update(Request $request, $local, TongTinPlayerList $tongTinPlayerList)
     {
         //
     }
@@ -79,7 +83,7 @@ class TongTinPlayerListController extends Controller
      * @param  \App\TongTinPlayerList  $tongTinPlayerList
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TongTinPlayerList $tongTinPlayerList)
+    public function destroy($local, TongTinPlayerList $tongTinPlayerList)
     {
         //
     }

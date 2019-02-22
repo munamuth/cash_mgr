@@ -9,6 +9,11 @@ use Auth;
 use Carbon\Carbon;
 class ExpenseController extends Controller
 {
+
+
+    public function __construct(Request $request){
+        app()->setlocale($request->local);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +36,6 @@ class ExpenseController extends Controller
      */
     public function create($local)
     {
-        
         $types = Type::where('type_of', "Expense")
                 ->where("u_id", Auth::id())
                 ->where("id", '>', 2)
