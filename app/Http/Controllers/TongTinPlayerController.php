@@ -13,9 +13,10 @@ class TongTinPlayerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TongTinPlayer $tongTinPlayer)
     {
-        return view('tongtin.player.index');
+        $players = $tongTinPlayer->get();
+        return view('tongtin.player.index', compact('players'));
     }
 
     /**
@@ -34,9 +35,17 @@ class TongTinPlayerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, TongTinPlayer $tongTinPlayer)
     {
-        echo "store";
+        $tongTinPlayer->name = $request->name;
+        $tongTinPlayer->phone = $request->phone;
+        $tongTinPlayer->address = $request->address;
+        if( $tongTinPlayer->save() ){
+            $request->session()->flash("status", "Your task was successfully");
+        } else {
+            $request->session()->flash("status", "Your task was not successfully");
+        }
+        return back();
     }
 
     /**
@@ -45,9 +54,12 @@ class TongTinPlayerController extends Controller
      * @param  \App\TongTinPlayer  $tongTinPlayer
      * @return \Illuminate\Http\Response
      */
-    public function show(TongTinPlayer $tongTinPlayer)
+    public function show(Request $request, $id, TongTinPlayer $tongTinPlayer)
     {
-        echo "show";
+        $player = $tongTinPlayer->find($id);
+        return Response()->json([
+            'DATA' => $player,
+        ], 200);
     }
 
     /**
@@ -56,9 +68,9 @@ class TongTinPlayerController extends Controller
      * @param  \App\TongTinPlayer  $tongTinPlayer
      * @return \Illuminate\Http\Response
      */
-    public function edit(TongTinPlayer $tongTinPlayer)
+    public function edit(TongTinPlayer $player)
     {
-       return view("tongtin.player.edit");
+       return view("tongtin.player.edit", compact('player'));
     }
 
     /**
@@ -68,9 +80,18 @@ class TongTinPlayerController extends Controller
      * @param  \App\TongTinPlayer  $tongTinPlayer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TongTinPlayer $tongTinPlayer)
+    public function update(Request $request, TongTinPlayer $tongTinPlayer, $id)
     {
-        echo "update";
+        $player = $tongTinPlayer->find($id);
+        $player->name = $request->name;
+        $player->phone = $request->phone;
+        $player->address = $request->address;
+        if( $player->save() ){
+            $request->session()->flash("status", "Your task was successfully");
+        } else {
+            $request->session()->flash("status", "Your task was not successfully");
+        }
+        return redirect(route('player.index'));
     }
 
     /**
@@ -79,8 +100,14 @@ class TongTinPlayerController extends Controller
      * @param  \App\TongTinPlayer  $tongTinPlayer
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TongTinPlayer $tongTinPlayer)
+    public function destroy(Request $request, TongTinPlayer $tongTinPlayer, $id)
     {
-        echo "destory";
+        $player = $tongTinPlayer->find($id);
+        if( $player->delete() ){
+            $request->session()->flash("status", "Your task was successfully");
+        } else {
+            $request->session()->flash("status", "Your task was not successfully");
+        }
+        return redirect(route('player.index'));
     }
 }

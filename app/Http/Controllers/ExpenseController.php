@@ -14,14 +14,14 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($local)
     {
         
         $expense = Expense::where('u_id', Auth::id() )->orderBy("created_at")->get();       
         $month = date('m');
         $total = Expense::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
 
-        return view('cash.expense.index', compact('expense', 'total'));
+        return view('cash.expense.index', compact('expense', 'total', 'local'));
     }
 
     /**
@@ -29,13 +29,14 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {
+        
         $types = Type::where('type_of', "Expense")
                 ->where("u_id", Auth::id())
                 ->where("id", '>', 2)
                 ->get();
-        return view('cash.expense.create', compact('types'));
+        return view('cash.expense.create', compact('types', 'local'));
     }
 
     /**
@@ -44,7 +45,7 @@ class ExpenseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $local)
     {
         $create = Carbon::createFromFormat('d/m/Y',$request->create); 
 
@@ -57,7 +58,7 @@ class ExpenseController extends Controller
         if( $expense->save() )
         {
             $request->session()->flash('status', 'Task was successfully!!!');
-            return redirect()->route('expense.index');
+            return redirect()->route('expense.index', $local);
         } else {
             $request->session()->flash('status', 'Task was not successfully!!!');
             return back();
@@ -70,9 +71,9 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function show(Expense $expense)
+    public function show($local, Expense $expense)
     {
-        return view('cash.expense.show');
+        return view('cash.expense.show', compact('local'));
     }
 
     /**
@@ -81,10 +82,10 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function edit(Expense $expense)
+    public function edit($local, Expense $expense)
     {
         $types = Type::where('type_of', "Expense")->get();
-        return view('cash.expense.edit', compact('expense', 'types'));
+        return view('cash.expense.edit', compact('expense', 'types', 'local'));
     }
 
     /**
@@ -94,7 +95,7 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expense $expense)
+    public function update(Request $request,$local, Expense $expense)
     {
         $create = Carbon::createFromFormat('d/m/Y',$request->create); 
 
@@ -105,7 +106,7 @@ class ExpenseController extends Controller
         $expense->created_at = $create->format('Y-m-d');
         if( $expense->save() ){
             $request->session()->flash('status', 'Task was successfully!!!');
-            return redirect()->route('expense.index');
+            return redirect()->route('expense.index', $local);
         } else {
             $request->session()->flash('status', 'Task was not successfully!!!');
             return back();
@@ -118,11 +119,11 @@ class ExpenseController extends Controller
      * @param  \App\Expense  $expense
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Expense $expense)
+    public function destroy(Request $request, $local, Expense $expense)
     {
         if( $expense->delete() ){
             $request->session()->flash('status', 'Task was successfully!!!');
-            return redirect()->route('expense.index');
+            return redirect()->route('expense.index', $local);
         } else {
             $request->session()->flash('status', 'Task was not successfully!!!');
             return back();

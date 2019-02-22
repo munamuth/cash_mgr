@@ -124,7 +124,7 @@
 		</div>
 
 		<div class="row" id="second-row">
-			<div class="col-12 col-sm-12 col-md-5 col-lg-4 col-xl-2 bg-secondary p-0 d-none d-md-block" id="menu">
+			<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 bg-secondary p-0 d-none d-md-block" id="menu">
 				<style type="text/css">
 					
 				</style>
@@ -132,26 +132,26 @@
 					<li><a class="font-weight-bold text-light" href="{{ url('/') }}"><i class="fa fa-home"></i> Home </a></li>
 					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-money"></i> Cash Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="{{ url('/income') }}"><i class="fa fa-angle-right"></i> Income <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ url('/expense') }}"><i class="fa fa-angle-right"></i> Expense <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ url('/type') }}"><i class="fa fa-angle-right"></i> Types <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('income.index', $local ) }}"><i class="fa fa-angle-right"></i> Income <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('expense.index', $local ) }}"><i class="fa fa-angle-right"></i> Expense <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('type.index', $local) }}"><i class="fa fa-angle-right"></i> Types <span class="float-right"></span></a></li>
 						</ul>
 					</li>
 					<li class="hasub"><a class="font-weight-bold text-light" href="#"><i class="fa fa-credit-card"></i> Tong Tin Management <span class="float-right"><i class="fa fa-angle-up fa-angle-down symbol"></i></span></a>
 						<ul class="submenu hide">
-							<li><a class="font-weight-bold text-light" href="{{ route('tongtins.index') }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('payout.index') }}"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index') }}"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('player.index') }}"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('tongtins.index', $local) }}"><i class="fa fa-angle-right"></i> Tong Tin <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('payout.index', $local ) }}"><i class="fa fa-angle-right"></i> Payout Record <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index', $local ) }}"><i class="fa fa-angle-right"></i> Player List <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('player.index', $local ) }}"><i class="fa fa-angle-right"></i> Player<span class="float-right"></span></a></li>
 						</ul>
 					</li>
 					
-					<li><a class="font-weight-bold text-light" href="{{ url('/users') }}"><i class="fa fa-users"></i> Users </a></li>
+					<li><a class="font-weight-bold text-light" href="{{ url('/users', $local) }}"><i class="fa fa-users"></i> Users </a></li>
 					<li><a class="font-weight-bold text-light" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="text-light"><i class="fa fa-sign-out"></i> Logout</a></li>
 
 				</ul>
 			</div>
-			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-10 overflow-auto" id="container">
+			<div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-9 overflow-auto" id="container">
 				<br>
 				@yield('body')
 				<br>
@@ -164,6 +164,8 @@
 		 	<p class="m-0 status">{{session('status')}}</p>
 		</div>
 	</div>
+
+
 	<script type="text/javascript">
 		$('#btnMenu').click( function(){
 			$("#menu").toggleClass('d-none')
@@ -190,5 +192,6 @@
 		 	$(this).find('.symbol').toggleClass('fa-angle-down')
 		 });
 	</script>
+	@yield('script')
 </body>
 </html>

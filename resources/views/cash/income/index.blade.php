@@ -16,7 +16,7 @@
 
 		<div class="col-9 col-sm-6">Your Income This Month: <span class="h4 text-success">៛ {{ number_format($total) }}</span></div>
 		<div class="col-3 col-sm-6 text-right">
-			<a class="btn btn-success btn-sm" href="{{ route('income.create') }}"><i class="fa fa-plus"></i> Create</a>
+			<a class="btn btn-success btn-sm" href="{{ route('income.create', $local) }}"><i class="fa fa-plus"></i> Create</a>
 		</div>
 	</div>
 	<br>
@@ -53,12 +53,12 @@
 								<td class="text-right text-success font-weight-bold">៛​​ <span class="text-right">{{number_format($in->amount)}}</span></td>
 								<td>{{$in->created_at->format('d/m/Y')}}</td>
 								<td class="d-flex">
-									<a class="btn btn-success btn-sm" href="{{ route('income.edit', $in->id) }}"><i class="fa fa-edit"></i> Edit</a>
+									<a class="btn btn-success btn-sm" href="{{ route('income.edit', [$local ,$in->id]) }}"><i class="fa fa-edit"></i> Edit</a>
 									&nbsp;
-									<form action="{{route('income.destroy', $in->id) }}" method="post">
+									<form action="{{route('income.destroy',[$local, $in->id]) }}" method="post">
 										@csrf
 										@method('delete')
-									<button type="submit" class="btn btn-danger btn-sm" href="{{ route('income.show', $in->id) }}"><i class="fa fa-trash"></i> Destroy</button>
+									<button type="submit" class="btn btn-danger btn-sm" href="{{ route('income.show',[$local ,$in->id]) }}"><i class="fa fa-trash"></i> Destroy</button>
 									</form>
 								</td>
 							</tr>

@@ -17,29 +17,30 @@
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/', function(){
-		return view('master');
+		$local = 'en';
+		return view('master', compact('local'));
 	});
 
 	// CASH ROUTER
 
-	Route::resource('/income', 'IncomeController');
-	Route::resource('/expense', 'ExpenseController');
-	Route::resource('/type', 'TypeController');
-	Route::resource('/users', 'UserController');
-	Route::get('/users/{id}/change/password', 'UserController@changePassword')->name('user.edit.password');
-	Route::post('/users/{id}/change/password', 'UserController@updatePassword')->name('user.update.password');
-	Route::get("/report", "ReportController@index");
+	Route::resource('/{local}/income', 'IncomeController');
+	Route::resource('/{local}/expense', 'ExpenseController');
+	Route::resource('/{local}/type', 'TypeController');
+	Route::resource('/{local}/users', 'UserController');
+	Route::get('/{local}/users/{id}/change/password', 'UserController@changePassword')->name('user.edit.password');
+	Route::post('/{local}/users/{id}/change/password', 'UserController@updatePassword')->name('user.update.password');
+	Route::get("/{local}/report", "ReportController@index");
 
 
 
 	// TONG TIN ROUTER
-	Route::resource('/tongtins', 'TongTinController');
-	Route::resource('/tongtin/payout', 'TongTinPayOutRecordController');
-	Route::resource('/tongtin/player', 'TongTinPlayerController');
-	Route::resource('/tongtin/player_list', 'TongTinPlayerListController');
+	Route::resource('/{local}/tongtins', 'TongTinController');
+	Route::resource('/{local}/tongtin/payout', 'TongTinPayOutRecordController');
+	Route::resource('/{local}/tongtin/player', 'TongTinPlayerController');
+	Route::resource('/{local}/tongtin/player_list', 'TongTinPlayerListController');
 });
 
 Auth::routes();
-Route::get('/login', 'UserController@login')->name('login');
-Route::post('/login', 'UserController@doLogin')->name('user.doLogin');
+Route::get('/{local}/login', 'UserController@login')->name('login');
+Route::post('/{local}/login', 'UserController@doLogin')->name('user.doLogin');
 

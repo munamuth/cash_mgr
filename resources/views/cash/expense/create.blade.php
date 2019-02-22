@@ -13,15 +13,15 @@
 	<div class="row">
 		<div class="col">
 			
-			<form action="{{ route('expense.store') }}" method="post" enctype="multipart/form-data" autocomplete="off">
+			<form action="{{ route('expense.store', $local) }}" method="post" enctype="multipart/form-data" autocomplete="off">
 				@csrf
 				@method('post')
 				<div class="row">
 					<div class="col-12 col-sm-12 col-md-10 col-lg-6 m-auto">
 						<div class="card animated zoomIn">
 							<div class="card-header">
-								New Expense
-								<a class="close" href="{{ route('expense.index') }}">
+								{{ trans('messages.new_expense') }}
+								<a class="close" href="{{ route('expense.index', $local) }}">
 						          <span aria-hidden="true">&times;</span>
 						        </a>
 							</div>

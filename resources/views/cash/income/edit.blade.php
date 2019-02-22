@@ -8,7 +8,7 @@
 	<div class="row">
 		<div class="col">
 			
-			<form action="{{ route('income.update', $income->id) }}" method="post" enctype="multipart/form-data" autocomplete="off">
+			<form action="{{ route('income.update',[$local, $income->id]) }}" method="post" enctype="multipart/form-data" autocomplete="off">
 				@csrf
 				@method('put')
 				<div class="row">
@@ -16,7 +16,7 @@
 						<div class="card animated zoomIn">
 							<div class="card-header">
 								New Income
-								<a class="close" href="{{ route('income.index') }}">
+								<a class="close" href="{{ route('income.index', $local) }}">
 						          <span aria-hidden="true">&times;</span>
 						        </a>
 							</div>

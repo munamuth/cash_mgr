@@ -1,5 +1,5 @@
 <?php
 
 return [
-	"Create" => "Create",
+	"new_expense" => "New Expense",
 ];

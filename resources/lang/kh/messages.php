@@ -1,5 +1,5 @@
 <?php
 
 return [
-	"Create" => "បន្ថែម",
+	"new_expense" => "ចំនាយថ្មី",
 ];

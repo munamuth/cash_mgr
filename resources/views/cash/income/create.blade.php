@@ -13,7 +13,7 @@
 	<div class="row">
 		<div class="col">
 			
-			<form action="{{ route('income.store') }}" method="post" enctype="multipart/form-data" autocomplete="off">
+			<form action="{{ route('income.store', $local) }}" method="post" enctype="multipart/form-data" autocomplete="off">
 				@csrf
 				@method('post')
 				<div class="row">
@@ -21,7 +21,7 @@
 						<div class="card animated zoomIn">
 							<div class="card-header">
 								New Income
-								<a class="close" href="{{ route('income.index') }}">
+								<a class="close" href="{{ route('income.index', $local) }}">
 						          <span aria-hidden="true">&times;</span>
 						        </a>
 							</div>

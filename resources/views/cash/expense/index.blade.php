@@ -13,7 +13,7 @@
 	<br>
 	<div class="row animated bounceInLeft">
 		<div class="col-12 col-sm-9">
-			<form class="form-inline" action="{{ url('expense/search') }}" method="get">
+			<form class="form-inline" action="{{ url('expense/search', $local) }}" method="get">
 				
 					<label>Type </label>
 					<select class="form-control form-control-sm">
@@ -23,7 +23,7 @@
 			</form>
 		</div>
 		<div class="col-12 col-sm-3 text-right">
-			<a class="btn btn-success btn-sm" href="{{ route('expense.create') }}"><i class="fa fa-plus"></i> Create</a>
+			<a class="btn btn-success btn-sm" href="{{ route('expense.create', $local) }}"><i class="fa fa-plus"></i> Create</a>
 
 		</div>
 		<div class="col-12 col-sm-12 text-right mt-3">Your Expense This Month: <span class="h4 text-danger">៛ {{number_format($total)}}</span></div>
@@ -62,12 +62,12 @@
 								<td class="text-danger text-right font-weight-bold">៛ {{number_format($ex->amount)}}</td>
 								<td>{{$ex->created_at->format('d/m/Y')}}</td>
 								<td class="d-flex">
-									<a class="btn btn-success btn-sm" href="{{ route('expense.edit', $ex->id) }}"><i class="fa fa-edit"></i> Edit</a>
+									<a class="btn btn-success btn-sm" href="{{ route('expense.edit', [$local, $ex->id]) }}"><i class="fa fa-edit"></i> Edit</a>
 									&nbsp;
-									<form action="{{route('expense.destroy', $ex->id) }}" method="post">
+									<form action="{{route('expense.destroy', [$local, $ex->id]) }}" method="post">
 										@csrf
 										@method('delete')
-									<button type="submit" class="btn btn-danger btn-sm" href="{{ route('expense.show', $ex->id) }}"><i class="fa fa-trash"></i> Destroy</button>
+									<button type="submit" class="btn btn-danger btn-sm" href="{{ route('expense.show', [$local, $ex->id]) }}"><i class="fa fa-trash"></i> Destroy</button>
 									</form>
 								</td>
 							</tr>

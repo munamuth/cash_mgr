@@ -14,13 +14,13 @@ class IncomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($local)
     {
         
         $income = Income::where('u_id', Auth::id() )->orderBy('created_at')->get();
         $month = date('m');
         $total = Income::where('u_id', Auth::id() )->whereMonth('created_at', $month)->sum('amount');
-        return view('cash.income.index', compact('income', 'total'));
+        return view('cash.income.index', compact('income', 'total', 'local'));
     }
 
     /**
@@ -28,13 +28,13 @@ class IncomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {   
         $types = Type::where('type_of', "Income")
                     ->where("u_id", Auth::id())
                     ->where("id", '>', 2)
                     ->get();
-        return view('cash.income.create', compact("types"));
+        return view('cash.income.create', compact("types", "local"));
     }
 
     /**
@@ -43,7 +43,7 @@ class IncomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $local)
     {
         
         $create = Carbon::createFromFormat('d/m/Y',$request->create);
@@ -57,7 +57,7 @@ class IncomeController extends Controller
         if( $income->save() )
         {
             $request->session()->flash('status', 'Task was successfully!!!');
-            return redirect()->route('income.index');
+            return redirect()->route('income.index', $local);
         } else {
             $request->session()->flash('status', 'Task was not successfully!!!');
             return back();
@@ -82,10 +82,10 @@ class IncomeController extends Controller
      * @param  \App\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function edit(Income $income)
+    public function edit($local, Income $income)
     {
         $types = Type::where('type_of', "Income")->get();
-        return view('cash.income.edit', compact('income', 'types'));
+        return view('cash.income.edit', compact('income', 'types', 'local'));
     }
 
     /**
@@ -95,7 +95,7 @@ class IncomeController extends Controller
      * @param  \App\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Income $income)
+    public function update(Request $request, $local, Income $income)
     {
         $create = Carbon::createFromFormat('d/m/Y',$request->create);
         $income->u_id = Auth::id();
@@ -105,7 +105,7 @@ class IncomeController extends Controller
         $income->created_at = $create->format('Y-m-d');
         if( $income->save() ){
             $request->session()->flash('status', 'Task was successfully!!!');
-            return redirect()->route('income.index');
+            return redirect()->route('income.index', $local);
         } else {
             $request->session()->flash('status', 'Task was not successfully!!!');
             return back();
@@ -118,11 +118,11 @@ class IncomeController extends Controller
      * @param  \App\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, Income $income)
+    public function destroy(Request $request, $local, Income $income)
     {
         if( $income->delete() ){
             $request->session()->flash('status', 'Task was successfully!!!');
-            return redirect()->route('income.index');
+            return redirect()->route('income.index', $local);
         } else {
             $request->session()->flash('status', 'Task was not successfully!!!');
             return back();

@@ -17,12 +17,13 @@
         <div class="row">
             <div class="col">
                 <!-- START FORM CREATE -->
-                <form action="{{ route('player.store') }}" method="post" autocomplete="off">
+                <form action="{{ route('player.update', $player->id) }}" method="post" autocomplete="off">
                 @csrf
+                @method('put')
                 <!-- START CARD  -->
                     <div class="card">
                         <div class="card-header">
-                            Create New Player
+                            Edit <span class="text-warning">{{ $player->name }}</span>
                             <a class="close" href="{{ route('player.index') }}">
                                 <span aria-hidden="true">&times;</span>
                             </a>
@@ -34,7 +35,7 @@
                                 <div class="row">
                                     <label for="name" class="col-12 col-sm-12 col-md-4">Name</label>
                                     <div class="col-12 col-sm-12 col-md-8">
-                                        <input type="text" name="name" class="form-control form-control-sm" placeholder="Player's name">
+                                        <input type="text" name="name" class="form-control form-control-sm" placeholder="Player's name" value="{{$player->name}}">
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +44,7 @@
                                 <div class="row">
                                     <label for="name" class="col-12 col-sm-12 col-md-4">Phone Number</label>
                                     <div class="col-12 col-sm-12 col-md-8">
-                                        <input type="text" name="phone" class="form-control form-control-sm" placeholder="Player's phone number">
+                                        <input type="text" name="phone" class="form-control form-control-sm" placeholder="Player's phone number" value="{{ $player->phone}}">
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +53,7 @@
                                 <div class="row">
                                     <label for="address" class="col-12 col-sm-12 col-md-4">Address</label>
                                     <div class="col-12 col-sm-12 col-md-8">
-                                        <textarea name="address" rows="2" class="form-control" placeholder="Player's address"></textarea>
+                                        <textarea name="address" rows="2" class="form-control" placeholder="Player's address">{{$player->address}}</textarea>
                                     </div>
                                 </div>
                             </div>
