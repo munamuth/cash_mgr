@@ -42,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Auth::routes();
-Route::get('/login', 'UserController@login')->name('login');
+Route::get('/{local}/login', 'UserController@login')->name('login');
 Route::post('/login', 'UserController@doLogin')->name('user.doLogin');
 
 

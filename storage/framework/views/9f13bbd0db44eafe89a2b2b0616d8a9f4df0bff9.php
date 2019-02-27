@@ -1,18 +1,17 @@
-@extends('master')
+<?php $__env->startSection('header'); ?>
 
-@section('header')
+<?php $__env->stopSection(); ?>
 
-@endsection
-
-@section('body')
+<?php $__env->startSection('body'); ?>
 	<div class="row m-auto">
 		<div class="col-12 col-sm-6 col-md-6">
 			<div class="card">
 				<div class="card-header">
-					Change Password of {{$user->name}}
+					Change Password of <?php echo e($user->name); ?>
+
 				</div>
-				<form action="{{ route('user.update.password', [$local, $user->id]) }}" method="post">
-					@csrf
+				<form action="<?php echo e(route('user.update.password', $user->id)); ?>" method="post">
+					<?php echo csrf_field(); ?>
 				<div class="card-body">
 					<div class="row form-group">
 						<div class="col-12 col-sm-5">
@@ -40,4 +39,5 @@
 			</div>
 		</div>
 	</div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('master', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

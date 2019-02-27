@@ -138,7 +138,7 @@ class UserController extends Controller
         }
     }
 
-    public function changePassword(Request $request, $id)
+    public function changePassword(Request $request,$local, $id)
     {
         $user = User::find($id);
         return view('user.change_password', compact('user'));
