@@ -35,7 +35,10 @@
                                     <label for="name" class="col-12 col-sm-12 col-md-4">{{ trans('lang.leader_name') }}</label>
                                     <div class="col-12 col-sm-12 col-md-8">
                                         <select name="leader_id" class="form-control form-control-sm">
-                                            <option value="0">{{ trans('lang.select_leader') }}</option>
+                                                <option value="0"></option>
+                                            @foreach( $players as $index => $player )
+                                                <option value="{{ $player->id }}">{{ $player->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>

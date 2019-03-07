@@ -34,7 +34,10 @@
                                     <label for="name" class="col-12 col-sm-12 col-md-4"><?php echo e(trans('lang.leader_name')); ?></label>
                                     <div class="col-12 col-sm-12 col-md-8">
                                         <select name="leader_id" class="form-control form-control-sm">
-                                            <option value="0"><?php echo e(trans('lang.select_leader')); ?></option>
+                                                <option value="0"></option>
+                                            <?php $__currentLoopData = $players; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $player): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <option value="<?php echo e($player->id); ?>"><?php echo e($player->name); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                     </div>
                                 </div>

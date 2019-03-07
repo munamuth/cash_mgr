@@ -7,6 +7,7 @@ use App\Type;
 use Illuminate\Http\Request;
 use Auth;
 use Carbon\Carbon;
+use App\Http\Requests\IncomeRequest;
 class IncomeController extends Controller
 {
     public function __construct(Request $request){
@@ -98,7 +99,7 @@ class IncomeController extends Controller
      * @param  \App\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $local, Income $income)
+    public function update(IncomeRequest $request, $local, Income $income)
     {
         $create = Carbon::createFromFormat('d/m/Y',$request->create);
         $income->u_id = Auth::id();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTongTinPayOutRecordsTable extends Migration
+class CreateTongTinPaymentTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateTongTinPayOutRecordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('tong_tin_pay_out_records', function (Blueprint $table) {
+        Schema::create('tong_tin_payment_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer("tongtin_id");
-            $table->double("payout_amount");
-            $table->integer("num_paid");
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateTongTinPayOutRecordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tong_tin_pay_out_records');
+        Schema::dropIfExists('tong_tin_payment_types');
     }
 }

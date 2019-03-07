@@ -54,7 +54,7 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<div class="col-12 col-sm-6">{{ trans('lang.amount') }}</div>
+									<div class="col-12 col-sm-6">{{ trans('lang.amount') }} {{ $errors->amount('required') }}</div>
 									<div class="col-12 col-sm-6"><input class="form-control form-control-sm" type="text" name="amount" value="{{ $income->amount }}"></div>
 								</div>
 								<div class="text-right">

@@ -53,7 +53,7 @@
 									</div>
 								</div>
 								<div class="form-group row">
-									<div class="col-12 col-sm-6"><?php echo e(trans('lang.amount')); ?></div>
+									<div class="col-12 col-sm-6"><?php echo e(trans('lang.amount')); ?> <?php echo e($errors->amount('required')); ?></div>
 									<div class="col-12 col-sm-6"><input class="form-control form-control-sm" type="text" name="amount" value="<?php echo e($income->amount); ?>"></div>
 								</div>
 								<div class="text-right">

@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\TongTin;
+use App\PaymentRecord;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\TongTinPlayer;
-
-class TongTinController extends Controller
+class PaymentRecordController extends Controller
 {
-    public function __construct(Request $request){
-        app()->setlocale($request->local);
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($local)
+    public function index()
     {
-        
-        return view('tongtin.tongtin.index', compact('local') );
+        //
     }
 
     /**
@@ -29,10 +23,9 @@ class TongTinController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($local)
+    public function create()
     {
-        $players = TongTinPlayer::get();
-        return view('tongtin.tongtin.create', compact('local', 'players'));
+        //
     }
 
     /**
@@ -41,7 +34,7 @@ class TongTinController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $local)
+    public function store(Request $request)
     {
         //
     }
@@ -49,10 +42,10 @@ class TongTinController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\TongTin  $tongTin
+     * @param  \App\PaymentRecord  $paymentRecord
      * @return \Illuminate\Http\Response
      */
-    public function show($local, TongTin $tongTin)
+    public function show(PaymentRecord $paymentRecord)
     {
         //
     }
@@ -60,22 +53,22 @@ class TongTinController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\TongTin  $tongTin
+     * @param  \App\PaymentRecord  $paymentRecord
      * @return \Illuminate\Http\Response
      */
-    public function edit($local, TongTin $tongTin)
+    public function edit(PaymentRecord $paymentRecord)
     {
-        return view('tongtin.tongtin.edit', compact('local'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TongTin  $tongTin
+     * @param  \App\PaymentRecord  $paymentRecord
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $local, TongTin $tongTin)
+    public function update(Request $request, PaymentRecord $paymentRecord)
     {
         //
     }
@@ -83,10 +76,10 @@ class TongTinController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TongTin  $tongTin
+     * @param  \App\PaymentRecord  $paymentRecord
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $local, TongTin $tongTin)
+    public function destroy(PaymentRecord $paymentRecord)
     {
         //
     }
