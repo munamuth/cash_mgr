@@ -151,7 +151,7 @@
 						<ul class="submenu hide">
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('tongtins.index', $local)); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.tongtin')); ?> <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('record.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.payment_record')); ?> <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="<?php echo e(route('type.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.payment_type')); ?> <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="<?php echo e(route('ptype.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.payment_type')); ?> <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player_list.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.player_list')); ?> <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="<?php echo e(route('player.index', $local )); ?>"><i class="fa fa-angle-right"></i> <?php echo e(trans('lang.player')); ?><span class="float-right"></span></a></li>
 						</ul>

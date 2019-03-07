@@ -149,7 +149,7 @@
 						<ul class="submenu hide">
 							<li><a class="font-weight-bold text-light" href="{{ route('tongtins.index', $local) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.tongtin') }} <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('record.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.payment_record') }} <span class="float-right"></span></a></li>
-							<li><a class="font-weight-bold text-light" href="{{ route('type.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.payment_type') }} <span class="float-right"></span></a></li>
+							<li><a class="font-weight-bold text-light" href="{{ route('ptype.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.payment_type') }} <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('player_list.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.player_list') }} <span class="float-right"></span></a></li>
 							<li><a class="font-weight-bold text-light" href="{{ route('player.index', $local ) }}"><i class="fa fa-angle-right"></i> {{ trans('lang.player') }}<span class="float-right"></span></a></li>
 						</ul>

@@ -36,8 +36,8 @@ Route::middleware(['auth'])->group(function () {
 
 	// TONG TIN ROUTER
 	Route::resource('/{local}/tongtins', 'TongTinController');
-	Route::resource('/{local}/tongtin/payment/record', 'TongTinPaymentTypeController');
-	Route::resource('/{local}/tongtin/payment/type', 'TongTinPaymentRecordController');
+	Route::resource('/{local}/tongtin/payment/record', 'TongTinPaymentRecordController');
+	Route::resource('/{local}/tongtin/payment/ptype', 'TongTinPaymentTypeController');
 	Route::resource('/{local}/tongtin/player', 'TongTinPlayerController');
 	Route::resource('/{local}/tongtin/player_list', 'TongTinPlayerListController');
 });

@@ -13,9 +13,9 @@ class TongTinPaymentTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($local)
     {
-        //
+        return view('tongtin.type.index', compact('local'));
     }
 
     /**
@@ -23,9 +23,9 @@ class TongTinPaymentTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($local)
     {
-        //
+        return view('tongtin.type.create', compact('local'));
     }
 
     /**
@@ -34,9 +34,11 @@ class TongTinPaymentTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request, $local)
+    {   $type = new TongTinPaymentType();
+        $type->name = $request->name;
+        $type->save();
+        return back();
     }
 
     /**
